@@ -1,0 +1,7 @@
+npm error Lifecycle script `dev` failed with error:
+npm error code 4294967295
+npm error path D:\CODE\code\forfun\Voice imitation\app\frontend
+npm error workspace @voice-studio/frontend@0.1.0
+npm error location D:\CODE\code\forfun\Voice imitation\app\frontend
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c vite --host 127.0.0.1

@@ -4,3 +4,7 @@ pydantic==2.11.3
 python-multipart==0.0.20
 pyyaml==6.0.2
 pyttsx3==2.98
+librosa==0.11.0
+soundfile==0.13.1
+python-dotenv==1.0.1
+imageio-ffmpeg==0.6.0

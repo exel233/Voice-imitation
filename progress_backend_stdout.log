@@ -1,0 +1,11 @@
+
+> voice-imitation-studio@0.1.0 backend:dev
+> node scripts/run_backend.cjs --port 8765
+
+INFO:     127.0.0.1:60327 - "GET /api/setup-status HTTP/1.1" 200 OK
+ > tts_models/multilingual/multi-dataset/xtts_v2 is already downloaded.
+ > Using model: xtts
+['Progress bar smoke test for text to speech.']
+ > Processing time: 7.594536304473877
+ > Real-time factor: 1.0740092708674256
+INFO:     127.0.0.1:60325 - "POST /api/tts/synthesize HTTP/1.1" 200 OK

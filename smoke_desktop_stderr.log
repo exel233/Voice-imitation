@@ -1,0 +1,21 @@
+npm error Lifecycle script `dev` failed with error:
+npm error code 4294967295
+npm error path D:\CODE\code\forfun\Voice imitation\app\desktop
+npm error workspace @voice-studio/desktop@0.1.0
+npm error location D:\CODE\code\forfun\Voice imitation\app\desktop
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -p tsconfig.json && wait-on tcp:5173 && node scripts/launch.cjs development
+sk_cache.cc(711)] Gpu Cache Creation failed: -2
+[110236:0401/222959.282:ERROR:disk_cache.cc(216)] Unable to create cache
+[110236:0401/222959.283:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[110236:0401/222959.285:ERROR:disk_cache.cc(216)] Unable to create cache
+[110236:0401/222959.286:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[110236:0401/223034.645:ERROR:network_service_instance_impl.cc(612)] Network service crashed, restarting service.
+[110236:0401/223034.952:ERROR:gpu_process_host.cc(953)] GPU process exited unexpectedly: exit_code=-1
+npm error Lifecycle script `dev` failed with error:
+npm error code 4294967295
+npm error path D:\CODE\code\forfun\Voice imitation\app\desktop
+npm error workspace @voice-studio/desktop@0.1.0
+npm error location D:\CODE\code\forfun\Voice imitation\app\desktop
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -p tsconfig.json && wait-on tcp:5173 && node scripts/launch.cjs development

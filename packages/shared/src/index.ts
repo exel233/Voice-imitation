@@ -31,6 +31,26 @@ export const synthesisControlsSchema = z.object({
   emphasis: z.array(z.string()).default([]),
 });
 
+export const voiceSampleSchema = z.object({
+  id: z.string(),
+  originalName: z.string(),
+  rawPath: z.string(),
+  processedPath: z.string(),
+  format: z.string(),
+  durationSec: z.number(),
+  sampleRate: z.number(),
+  channels: z.number(),
+  warnings: z.array(z.string()).default([]),
+});
+
+export const profileDiagnosticsSchema = z.object({
+  qualityScore: z.number().min(0).max(1).default(0),
+  warnings: z.array(z.string()).default([]),
+  notes: z.array(z.string()).default([]),
+  totalDurationSec: z.number().default(0),
+  recommendedMinSec: z.number().default(20),
+});
+
 export const voiceProfileSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -39,8 +59,17 @@ export const voiceProfileSchema = z.object({
   createdAt: z.string(),
   updatedAt: z.string(),
   sampleIds: z.array(z.string()).default([]),
+  samples: z.array(voiceSampleSchema).default([]),
   previewAudioPath: z.string().optional(),
+  quickPreviewAudioPath: z.string().optional(),
+  conditioningArtifactPath: z.string().optional(),
   authorizedUseConfirmed: z.boolean().default(false),
+  status: z.enum(["processing", "ready", "low_quality", "failed"]).default("processing"),
+  requestedProvider: z.string().default("adaptive_clone"),
+  synthesisProvider: z.string().default("fallback_generic"),
+  cloningCapable: z.boolean().default(false),
+  fallbackReason: z.string().optional(),
+  diagnostics: profileDiagnosticsSchema.default({}),
   metadata: z.record(z.string(), z.any()).default({}),
 });
 
@@ -77,7 +106,7 @@ export const settingsSchema = z.object({
   storageRoot: z.string().default("storage"),
   enableDenoise: z.boolean().default(true),
   enableSourceSeparation: z.boolean().default(true),
-  preferredTtsProvider: z.string().default("fallback"),
+  preferredTtsProvider: z.string().default("xtts"),
   preferredAsrProvider: z.string().default("fallback"),
   preferredVcProvider: z.string().default("fallback"),
 });
@@ -90,12 +119,34 @@ export const transcriptSegmentSchema = z.object({
   speaker: z.string().optional(),
 });
 
+export const setupStatusSchema = z.object({
+  requestedTtsProvider: z.string(),
+  activeTtsProvider: z.string(),
+  providerResolutionNote: z.string().nullable().optional(),
+  xtts: z.object({
+    importable: z.boolean(),
+    available: z.boolean(),
+    needsTosAcceptance: z.boolean(),
+  }),
+  openvoice: z.object({
+    importable: z.boolean(),
+    available: z.boolean(),
+  }),
+  mediaTools: z.object({
+    ffmpeg: z.boolean(),
+    ffprobe: z.boolean(),
+  }),
+});
+
 export type AppSection = z.infer<typeof appSectionSchema>;
 export type SynthesisControls = z.infer<typeof synthesisControlsSchema>;
+export type VoiceSampleRecord = z.infer<typeof voiceSampleSchema>;
+export type ProfileDiagnostics = z.infer<typeof profileDiagnosticsSchema>;
 export type VoiceProfile = z.infer<typeof voiceProfileSchema>;
 export type ProjectRecord = z.infer<typeof projectSchema>;
 export type JobRecord = z.infer<typeof jobSchema>;
 export type AppSettings = z.infer<typeof settingsSchema>;
 export type TranscriptSegment = z.infer<typeof transcriptSegmentSchema>;
+export type SetupStatus = z.infer<typeof setupStatusSchema>;
 
 export const defaultSynthesisControls = synthesisControlsSchema.parse({});

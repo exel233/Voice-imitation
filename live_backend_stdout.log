@@ -1,0 +1,8 @@
+
+> voice-imitation-studio@0.1.0 backend:dev
+> node scripts/run_backend.cjs --port 8765
+
+INFO:     127.0.0.1:57817 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57818 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57838 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57839 - "GET /api/setup-status HTTP/1.1" 200 OK

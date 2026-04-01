@@ -2,6 +2,7 @@ import { app, BrowserWindow, shell } from "electron";
 import path from "node:path";
 
 const isDev = process.env.NODE_ENV !== "production";
+const shouldOpenDevTools = process.env.VOICE_STUDIO_OPEN_DEVTOOLS === "1";
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -16,7 +17,9 @@ function createWindow() {
 
   if (isDev) {
     void mainWindow.loadURL("http://127.0.0.1:5173");
-    mainWindow.webContents.openDevTools({ mode: "detach" });
+    if (shouldOpenDevTools) {
+      mainWindow.webContents.openDevTools({ mode: "detach" });
+    }
     mainWindow.webContents.setWindowOpenHandler(({ url }) => {
       void shell.openExternal(url);
       return { action: "deny" };

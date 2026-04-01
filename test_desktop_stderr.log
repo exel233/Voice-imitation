@@ -1,0 +1,7 @@
+npm error Lifecycle script `dev` failed with error:
+npm error code 4294967295
+npm error path D:\CODE\code\forfun\Voice imitation\app\desktop
+npm error workspace @voice-studio/desktop@0.1.0
+npm error location D:\CODE\code\forfun\Voice imitation\app\desktop
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -p tsconfig.json && wait-on tcp:5173 && node scripts/launch.cjs development

@@ -1,0 +1,17 @@
+
+> voice-imitation-studio@0.1.0 backend:dev
+> node scripts/run_backend.cjs --port 8765
+
+INFO:     127.0.0.1:56970 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56971 - "POST /api/tts/synthesize HTTP/1.1" 500 Internal Server Error
+ > tts_models/multilingual/multi-dataset/xtts_v2 is already downloaded.
+ > Using model: xtts
+['This preview checks whether the saved profile is shaping the generated voice.']
+ > Processing time: 10.244274139404297
+ > Real-time factor: 1.3347726480444877
+INFO:     127.0.0.1:57012 - "POST /api/voice-profiles HTTP/1.1" 200 OK
+['This is a rebuilt XTTS generation for the exel voice profile after fixing the backend runtime.']
+ > Processing time: 4.243013858795166
+ > Real-time factor: 0.5639312830699285
+INFO:     127.0.0.1:57074 - "POST /api/tts/synthesize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57109 - "GET /api/setup-status HTTP/1.1" 200 OK

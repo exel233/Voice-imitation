@@ -8,13 +8,16 @@
     "packages/shared"
   ],
   "scripts": {
-    "dev": "concurrently -k \"npm run dev --workspace packages/shared\" \"npm run dev --workspace app/frontend\" \"npm run dev --workspace app/desktop\"",
-    "dev:all": "concurrently -k \"npm run backend:dev\" \"npm run dev\"",
+    "dev": "concurrently -k \"npm run backend:dev\" \"npm run dev:ui\"",
+    "dev:ui": "concurrently -k \"npm run dev --workspace packages/shared\" \"npm run dev --workspace app/frontend\" \"npm run dev --workspace app/desktop\"",
+    "dev:all": "npm run dev",
     "build": "npm run build --workspace packages/shared && npm run build --workspace app/frontend && npm run build --workspace app/desktop",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "backend:dev": "python -m uvicorn backend.app.main:app --reload --port 8765",
-    "backend:start": "python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8765"
+    "backend:dev": "node scripts/run_backend.cjs --port 8765",
+    "backend:start": "node scripts/run_backend.cjs --host 127.0.0.1 --port 8765",
+    "cleanup:profile-data:check": "python scripts/cleanup_orphaned_profile_data.py",
+    "cleanup:profile-data": "python scripts/cleanup_orphaned_profile_data.py --apply"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

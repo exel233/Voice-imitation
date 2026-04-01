@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
 from ..models import CreateVoiceProfileRequest
 from ..services import VoiceProfileService
@@ -19,7 +19,31 @@ def create_profile(request: CreateVoiceProfileRequest):
         raise HTTPException(status_code=400, detail="Authorized voice confirmation is required.")
     if not request.samplePaths:
         raise HTTPException(status_code=400, detail="At least one sample path is required.")
-    return service.create_profile(request)
+    return service.create_profile_from_paths(request)
+
+
+@router.post("/voice-profiles/upload")
+async def create_profile_from_upload(
+    name: str = Form(...),
+    description: str = Form(""),
+    authorizedUseConfirmed: bool = Form(False),
+    clientJobId: str | None = Form(None),
+    files: list[UploadFile] = File(...),
+):
+    if not authorizedUseConfirmed:
+        raise HTTPException(status_code=400, detail="Authorized voice confirmation is required.")
+    if not files:
+        raise HTTPException(status_code=400, detail="At least one sample file is required.")
+    payloads: list[tuple[str, bytes]] = []
+    for file in files:
+        payloads.append((file.filename or "sample.wav", await file.read()))
+    return service.create_profile_from_uploads(
+        name=name,
+        description=description,
+        authorized=authorizedUseConfirmed,
+        files=payloads,
+        client_job_id=clientJobId,
+    )
 
 
 @router.delete("/voice-profiles/{profile_id}")

@@ -7,12 +7,14 @@ from uuid import uuid4
 
 from pydantic import BaseModel
 
+from .config import env_str
 from .models import AppSettings, JobRecord, ProjectRecord, VoiceProfile
 
 T = TypeVar("T", bound=BaseModel)
 
-ROOT = Path("storage")
+ROOT = Path(env_str("VOICE_STUDIO_STORAGE_ROOT", "storage"))
 PROFILES = ROOT / "profiles"
+PROFILE_DATA = ROOT / "profile_data"
 SAMPLES = ROOT / "samples"
 PROJECTS = ROOT / "projects"
 OUTPUTS = ROOT / "outputs"
@@ -26,7 +28,7 @@ def now_iso() -> str:
 
 
 def ensure_storage() -> None:
-    for path in [ROOT, PROFILES, SAMPLES, PROJECTS, OUTPUTS, JOBS, CACHE]:
+    for path in [ROOT, PROFILES, PROFILE_DATA, SAMPLES, PROJECTS, OUTPUTS, JOBS, CACHE]:
         path.mkdir(parents=True, exist_ok=True)
     if not SETTINGS.exists():
         SETTINGS.write_text(AppSettings().model_dump_json(indent=2), encoding="utf-8")
@@ -38,7 +40,7 @@ def new_id(prefix: str) -> str:
 
 def read_model(path: Path, model_type: type[T]) -> T:
     ensure_storage()
-    return model_type.model_validate_json(path.read_text(encoding="utf-8"))
+    return model_type.model_validate_json(path.read_text(encoding="utf-8-sig"))
 
 
 def write_model(path: Path, model: BaseModel) -> None:
@@ -88,9 +90,9 @@ def save_profile(profile: VoiceProfile) -> VoiceProfile:
 
 
 def delete_profile(profile_id: str) -> None:
-    path = PROFILES / f"{profile_id}.json"
-    if path.exists():
-        path.unlink()
+    profile_path = PROFILES / f"{profile_id}.json"
+    if profile_path.exists():
+        profile_path.unlink()
 
 
 def read_profile(profile_id: str) -> VoiceProfile:
@@ -107,12 +109,43 @@ def save_job(job: JobRecord) -> JobRecord:
     return job
 
 
-def copy_to_profile_sample_area(profile_id: str, source_path: str) -> str:
-    source = Path(source_path)
-    if not source.exists():
-        raise FileNotFoundError(f"Sample does not exist: {source}")
-    target_dir = SAMPLES / profile_id
-    target_dir.mkdir(parents=True, exist_ok=True)
-    destination = target_dir / source.name
-    destination.write_bytes(source.read_bytes())
-    return str(destination.resolve())
+def read_job(job_id: str) -> JobRecord:
+    return read_model(JOBS / f"{job_id}.json", JobRecord)
+
+
+def profile_dir(profile_id: str) -> Path:
+    path = PROFILE_DATA / profile_id
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def profile_raw_dir(profile_id: str) -> Path:
+    path = profile_dir(profile_id) / "raw"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def profile_processed_dir(profile_id: str) -> Path:
+    path = profile_dir(profile_id) / "processed"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def profile_artifacts_dir(profile_id: str) -> Path:
+    path = profile_dir(profile_id) / "artifacts"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def profile_preview_dir(profile_id: str) -> Path:
+    path = profile_dir(profile_id) / "previews"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def is_storage_path(path: str | Path) -> bool:
+    try:
+        resolved = Path(path).resolve()
+        return ROOT.resolve() in resolved.parents or resolved == ROOT.resolve()
+    except FileNotFoundError:
+        return False

@@ -1,12 +1,15 @@
+from . import config  # noqa: F401
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .routers import (
     audio_replacement,
     jobs,
+    media,
     overview,
     projects,
     segments,
+    setup,
     settings,
     tts,
     video_replacement,
@@ -24,6 +27,7 @@ app.add_middleware(
 )
 
 app.include_router(overview.router, prefix="/api")
+app.include_router(media.router, prefix="/api")
 app.include_router(voice_profiles.router, prefix="/api")
 app.include_router(tts.router, prefix="/api")
 app.include_router(audio_replacement.router, prefix="/api")
@@ -32,3 +36,4 @@ app.include_router(jobs.router, prefix="/api")
 app.include_router(projects.router, prefix="/api")
 app.include_router(settings.router, prefix="/api")
 app.include_router(segments.router, prefix="/api")
+app.include_router(setup.router, prefix="/api")

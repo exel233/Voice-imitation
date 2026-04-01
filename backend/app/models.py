@@ -16,6 +16,26 @@ class SynthesisControls(BaseModel):
     emphasis: list[str] = Field(default_factory=list)
 
 
+class VoiceSampleRecord(BaseModel):
+    id: str
+    originalName: str
+    rawPath: str
+    processedPath: str
+    format: str
+    durationSec: float
+    sampleRate: int
+    channels: int
+    warnings: list[str] = Field(default_factory=list)
+
+
+class ProfileDiagnostics(BaseModel):
+    qualityScore: float = 0
+    warnings: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+    totalDurationSec: float = 0
+    recommendedMinSec: float = 20
+
+
 class VoiceProfile(BaseModel):
     id: str
     name: str
@@ -24,8 +44,17 @@ class VoiceProfile(BaseModel):
     createdAt: str
     updatedAt: str
     sampleIds: list[str] = Field(default_factory=list)
+    samples: list[VoiceSampleRecord] = Field(default_factory=list)
     previewAudioPath: str | None = None
+    quickPreviewAudioPath: str | None = None
+    conditioningArtifactPath: str | None = None
     authorizedUseConfirmed: bool = False
+    status: Literal["processing", "ready", "low_quality", "failed"] = "processing"
+    requestedProvider: str = "adaptive_clone"
+    synthesisProvider: str = "fallback_generic"
+    cloningCapable: bool = False
+    fallbackReason: str | None = None
+    diagnostics: ProfileDiagnostics = Field(default_factory=ProfileDiagnostics)
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -62,7 +91,7 @@ class AppSettings(BaseModel):
     storageRoot: str = "storage"
     enableDenoise: bool = True
     enableSourceSeparation: bool = True
-    preferredTtsProvider: str = "fallback"
+    preferredTtsProvider: str = "xtts"
     preferredAsrProvider: str = "fallback"
     preferredVcProvider: str = "fallback"
 
@@ -87,12 +116,14 @@ class TtsRequest(BaseModel):
     profileId: str
     controls: SynthesisControls
     projectName: str | None = None
+    clientJobId: str | None = None
 
 
 class ReplacementRequest(BaseModel):
     inputPath: str
     profileId: str
     controls: SynthesisControls
+    clientJobId: str | None = None
 
 
 class SegmentInspectionRequest(BaseModel):

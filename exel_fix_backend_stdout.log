@@ -1,0 +1,63 @@
+
+> voice-imitation-studio@0.1.0 backend:dev
+> node scripts/run_backend.cjs --port 8765
+
+[run_backend] Port 8765 is already in use by PID(s): 98656. Attempting cleanup.
+[run_backend] Could not stop PID 98656.
+INFO:     127.0.0.1:58963 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58963 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58976 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+ > tts_models/multilingual/multi-dataset/xtts_v2 is already downloaded.
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+ > Using model: xtts
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58978 - "GET /api/setup-status HTTP/1.1" 200 OK
+['This is a fresh exel test after enabling persistent XTTS startup.']
+INFO:     127.0.0.1:59024 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59024 - "GET /api/setup-status HTTP/1.1" 200 OK
+ > Processing time: 9.668824195861816
+ > Real-time factor: 1.9968302629884707
+INFO:     127.0.0.1:58985 - "POST /api/tts/synthesize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59079 - "GET /api/setup-status HTTP/1.1" 200 OK
