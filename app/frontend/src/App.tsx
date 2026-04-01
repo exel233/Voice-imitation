@@ -22,7 +22,7 @@ import {
   Upload,
   Waves,
 } from "lucide-react";
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { api } from "./lib/api";
 
 type Overview = {
@@ -63,6 +63,7 @@ export function App() {
   const [pendingFiles, setPendingFiles] = useState<File[]>([]);
   const [profileBuildState, setProfileBuildState] = useState<{
     jobId: string;
+    resultId?: string;
     uploadProgress: number;
     processingProgress: number;
     step: string;
@@ -86,32 +87,61 @@ export function App() {
     message: string;
     error?: string;
   } | null>(null);
+  const refreshFailuresRef = useRef(0);
+  const activeWorkRef = useRef(false);
 
   const selectedProfile = useMemo(
     () => overview.profiles.find((profile) => profile.id === selectedProfileId) ?? null,
     [overview.profiles, selectedProfileId],
   );
+  const selectedProfileIdRef = useRef(selectedProfileId);
 
-  const refresh = async () => {
+  useEffect(() => {
+    selectedProfileIdRef.current = selectedProfileId;
+  }, [selectedProfileId]);
+
+  useEffect(() => {
+    activeWorkRef.current = Boolean(profileBuildState?.active || operationState?.active || inspectState?.active);
+  }, [profileBuildState?.active, operationState?.active, inspectState?.active]);
+
+  const refresh = async (options?: { force?: boolean }) => {
+    if (!options?.force && activeWorkRef.current) {
+      return;
+    }
     try {
       const data = await api.getOverview();
       const setup = await api.getSetupStatus();
+      refreshFailuresRef.current = 0;
       setOverview(data);
       setSetupStatus(setup);
-      if (!selectedProfileId && data.profiles[0]) {
-        setSelectedProfileId(data.profiles[0].id);
-      }
+      setSelectedProfileId((current) => {
+        const active = current || selectedProfileIdRef.current;
+        if (active && data.profiles.some((profile) => profile.id === active)) {
+          return active;
+        }
+        return data.profiles[0]?.id ?? "";
+      });
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Backend refresh failed";
-      setStatus(message);
+      refreshFailuresRef.current += 1;
+      if (refreshFailuresRef.current >= 3) {
+        const message = error instanceof Error ? error.message : "Backend refresh failed";
+        setStatus(message);
+      }
     }
   };
 
   useEffect(() => {
-    void refresh();
+    void refresh({ force: true });
     const interval = window.setInterval(() => void refresh(), 4000);
     return () => window.clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!activeWorkRef.current) {
+      return;
+    }
+    refreshFailuresRef.current = 0;
+  }, [profileBuildState?.active, operationState?.active, inspectState?.active]);
 
   useEffect(() => {
     if (!profileBuildState?.active) {
@@ -128,6 +158,7 @@ export function App() {
             }
             const next = {
               ...current,
+              resultId: job.resultId ?? current.resultId,
               processingProgress: job.progress,
               step: job.step,
               message: job.message || job.step,
@@ -137,7 +168,10 @@ export function App() {
             return next;
           });
           if (job.status === "completed" || job.status === "failed") {
-            void refresh();
+            if (job.status === "completed" && job.resultId) {
+              setSelectedProfileId(job.resultId);
+            }
+            void refresh({ force: true });
           }
         })
         .catch(() => {
@@ -195,7 +229,7 @@ export function App() {
             };
           });
           if (job.status === "completed" || job.status === "failed") {
-            void refresh();
+            void refresh({ force: true });
           }
         })
         .catch(() => {
@@ -259,7 +293,7 @@ export function App() {
     });
     setStatus("Uploading voice samples");
     try {
-      const created = await api.uploadProfile({
+      const job = await api.uploadProfile({
         ...profileDraft,
         files: pendingFiles,
         clientJobId: jobId,
@@ -275,23 +309,23 @@ export function App() {
               : current,
           ),
       });
-      setStatus(`Built profile ${created.name} with ${created.samples.length} samples`);
-      setSelectedProfileId(created.id);
-      setPendingFiles([]);
-      setProfileDraft({ name: "", description: "", authorizedUseConfirmed: true });
       setProfileBuildState((current) =>
         current && current.jobId === jobId
           ? {
               ...current,
               uploadProgress: 1,
-              processingProgress: 1,
-              step: "Completed",
-              message: `Profile ready: ${created.name}`,
-              active: false,
+              processingProgress: Math.max(current.processingProgress, job.progress),
+              step: job.step || "Preprocessing samples",
+              message: job.message || "Upload complete, building profile artifacts",
+              active: true,
+              resultId: job.resultId ?? current.resultId,
             }
           : current,
       );
-      await refresh();
+      setStatus("Upload complete. Building profile artifacts.");
+      setPendingFiles([]);
+      setProfileDraft({ name: "", description: "", authorizedUseConfirmed: true });
+      await refresh({ force: true });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Profile upload failed";
       setStatus(message);
@@ -336,7 +370,7 @@ export function App() {
             }
           : current,
       );
-      await refresh();
+      await refresh({ force: true });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Synthesis failed";
       setStatus(message);
@@ -408,7 +442,7 @@ export function App() {
             }
           : current,
       );
-      await refresh();
+      await refresh({ force: true });
     } catch (error) {
       const message = error instanceof Error ? error.message : `${kind} replacement failed`;
       setStatus(message);
@@ -586,7 +620,12 @@ export function App() {
                             <Badge>{profile.diagnostics.totalDurationSec.toFixed(1)}s</Badge>
                           </div>
                         </div>
-                        <button className="text-sm text-red-700" onClick={() => void api.deleteProfile(profile.id).then(refresh)}>
+                        <button
+                          className="text-sm text-red-700"
+                          onClick={() =>
+                            void api.deleteProfile(profile.id).then(() => refresh({ force: true }))
+                          }
+                        >
                           Delete
                         </button>
                       </div>

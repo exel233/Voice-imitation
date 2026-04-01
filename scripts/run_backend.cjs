@@ -78,7 +78,7 @@ function findPortOwners(port) {
       .filter((line) => line.includes(`:${port}`) && line.includes("LISTENING"))
       .map((line) => line.trim().split(/\s+/))
       .map((parts) => Number(parts[parts.length - 1]))
-      .filter((value, index, array) => Number.isFinite(value) && array.indexOf(value) === index);
+      .filter((value, index, array) => Number.isFinite(value) && value > 0 && array.indexOf(value) === index);
   }
 
   const result = spawnSync("lsof", ["-ti", `tcp:${port}`], { encoding: "utf8", cwd: root });
@@ -88,7 +88,7 @@ function findPortOwners(port) {
   return result.stdout
     .split(/\r?\n/)
     .map((line) => Number(line.trim()))
-    .filter((value, index, array) => Number.isFinite(value) && array.indexOf(value) === index);
+    .filter((value, index, array) => Number.isFinite(value) && value > 0 && array.indexOf(value) === index);
 }
 
 function stopProcess(pid) {
@@ -146,7 +146,6 @@ const filteredArgs =
 const port = getArgValue(filteredArgs, "--port", "8765");
 
 freePortIfNeeded(port);
-
 const child = spawn(
   python,
   ["-m", "uvicorn", "backend.app.main:app", ...filteredArgs],
@@ -156,6 +155,17 @@ const child = spawn(
     env: process.env,
   },
 );
+
+function shutdown(signal) {
+  if (!child.killed) {
+    child.kill(signal);
+    return;
+  }
+  process.exit(0);
+}
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));
 
 child.on("exit", (code) => {
   process.exit(code ?? 0);

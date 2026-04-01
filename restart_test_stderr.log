@@ -1,0 +1,1441 @@
+INFO:     Started server process [17272]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [102328]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [98952]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108172]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [43236]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110936]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115064]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107692]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117104]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117756]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117120]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [106312]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [99788]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115576]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116948]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+D:\CODE\code\forfun\Voice imitation\backend\app\audio_pipeline.py:44: UserWarning: PySoundFile failed. Trying audioread instead.
+  audio, sr = librosa.load(raw_path, sr=TARGET_SAMPLE_RATE, mono=True)
+C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening 'storage\\profile_data\\profile_68abf0c45b63\\raw\\sample_51672d2979ae.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\routers\voice_profiles.py", line 40, in create_profile_from_upload
+    return service.create_profile_from_uploads(
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\services.py", line 62, in create_profile_from_uploads
+    samples.append(ingest_uploaded_bytes(profile_id, filename, payload))
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\audio_pipeline.py", line 40, in ingest_uploaded_bytes
+    return preprocess_sample(profile_id, sample_id, raw_target, filename)
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\audio_pipeline.py", line 44, in preprocess_sample
+    audio, sr = librosa.load(raw_path, sr=TARGET_SAMPLE_RATE, mono=True)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\util\decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\audioread\__init__.py", line 131, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113324]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112208]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117600]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117372]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117432]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [104296]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115100]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117180]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [64056]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+D:\CODE\code\forfun\Voice imitation\backend\app\audio_pipeline.py:44: UserWarning: PySoundFile failed. Trying audioread instead.
+  audio, sr = librosa.load(raw_path, sr=TARGET_SAMPLE_RATE, mono=True)
+C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 176, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 209, in __soundfile_load
+    context = sf.SoundFile(path)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\soundfile.py", line 690, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\soundfile.py", line 1265, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening 'storage\\profile_data\\profile_f9c7eef29ba5\\raw\\sample_2a3911237985.m4a': Format not recognised.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\routers\voice_profiles.py", line 40, in create_profile_from_upload
+    return service.create_profile_from_uploads(
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\services.py", line 62, in create_profile_from_uploads
+    samples.append(ingest_uploaded_bytes(profile_id, filename, payload))
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\audio_pipeline.py", line 40, in ingest_uploaded_bytes
+    return preprocess_sample(profile_id, sample_id, raw_target, filename)
+  File "D:\CODE\code\forfun\Voice imitation\backend\app\audio_pipeline.py", line 44, in preprocess_sample
+    audio, sr = librosa.load(raw_path, sr=TARGET_SAMPLE_RATE, mono=True)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 184, in load
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\util\decorators.py", line 63, in __wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\librosa\core\audio.py", line 240, in __audioread_load
+    reader = audioread.audio_open(path)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\audioread\__init__.py", line 131, in audio_open
+    raise NoBackendError()
+audioread.exceptions.NoBackendError
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115052]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115128]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114032]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110252]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110680]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [85988]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112416]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [68372]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [95224]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116420]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117396]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [93212]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114332]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115812]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [103476]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115748]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=4294967295, signal=null). Restarting in 1500ms...
+INFO:     Started server process [26720]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114720]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [99400]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [70520]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113796]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [93212]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112716]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [79432]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113640]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114008]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [102520]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113896]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [76204]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116240]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115452]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111652]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115636]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [102496]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116304]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112504]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111504]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [103700]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116800]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [105544]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [97796]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [106840]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115784]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [109892]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113568]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108660]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108508]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [68572]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [97760]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [8572]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [85616]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117420]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116920]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115812]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [70832]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113016]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [59540]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [90256]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [70356]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111104]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111480]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [2628]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112672]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [78676]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117756]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [86564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117040]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [77564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [103248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108536]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113620]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [105880]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [100960]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115904]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [94936]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113240]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115208]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107668]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115496]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [105752]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112780]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115044]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115860]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [101988]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108688]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107164]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [102628]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [26720]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111460]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116308]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115608]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117708]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114332]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [90728]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [86948]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [77696]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107416]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113332]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113304]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [83476]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [105716]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [64564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112936]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [75004]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117284]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [85164]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [103096]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [83140]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115716]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [88036]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [103096]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [109036]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [76332]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112836]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117652]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [109676]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [72972]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [18400]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [99608]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110736]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114344]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116368]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111960]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116796]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [73588]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111632]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [101916]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [75832]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117532]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112024]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116640]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113524]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117712]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116144]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [30500]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [105960]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [106628]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [81636]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [17824]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116520]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [39908]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [94692]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [100200]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [101036]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116776]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [96560]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [97244]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107380]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [106380]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114344]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116072]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [17616]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113408]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111304]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116212]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [71564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [100792]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [82492]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [91800]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [77416]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [104820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110196]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108412]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108096]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116084]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113304]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [31888]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [108104]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107216]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113896]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113356]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [113276]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [115692]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [77564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114576]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116432]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [112632]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [97328]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [98392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [28336]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111508]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116660]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [111856]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [110240]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [85708]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [69000]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [107100]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [67456]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114120]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [114872]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [116340]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [117064]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [106656]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [81328]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [79440]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8765): 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[run_backend] Backend exited unexpectedly (code=1, signal=null). Restarting in 1500ms...
+INFO:     Started server process [69000]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+[run_backend] Backend exited unexpectedly (code=3221225786, signal=null). Restarting in 1500ms...
+^C

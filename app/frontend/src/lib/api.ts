@@ -9,19 +9,47 @@ import type {
 } from "@voice-studio/shared";
 
 const baseUrl = "http://127.0.0.1:8765";
+const sleep = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+const recoverJob = async (jobId?: string): Promise<JobRecord | null> => {
+  if (!jobId) {
+    return null;
+  }
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    try {
+      const response = await fetch(`${baseUrl}/api/jobs/${jobId}`);
+      if (response.ok) {
+        return (await response.json()) as JobRecord;
+      }
+    } catch {
+      // Keep retrying while the backend settles.
+    }
+    await sleep(500 * (attempt + 1));
+  }
+  return null;
+};
 
 const call = async <T>(path: string, init?: RequestInit): Promise<T> => {
-  let response: Response;
-  try {
-    response = await fetch(`${baseUrl}${path}`, init);
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : "Unknown network failure";
-    throw new Error(`Backend unavailable at ${baseUrl}. Start the backend with npm run dev or npm run backend:dev. ${detail}`);
+  const method = init?.method ?? "GET";
+  const retries = method === "GET" ? 2 : 0;
+
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      const response = await fetch(`${baseUrl}${path}`, init);
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+      return response.json() as Promise<T>;
+    } catch (error) {
+      if (attempt < retries) {
+        await sleep(350 * (attempt + 1));
+        continue;
+      }
+      const detail = error instanceof Error ? error.message : "Unknown network failure";
+      throw new Error(`Backend unavailable at ${baseUrl}. Start the backend with npm run dev or npm run backend:dev. ${detail}`);
+    }
   }
-  if (!response.ok) {
-    throw new Error(await response.text());
-  }
-  return response.json() as Promise<T>;
+  throw new Error(`Backend unavailable at ${baseUrl}. Start the backend with npm run dev or npm run backend:dev.`);
 };
 
 export const api = {
@@ -60,7 +88,7 @@ export const api = {
       form.append("clientJobId", payload.clientJobId);
     }
     payload.files.forEach((file) => form.append("files", file));
-    return new Promise<VoiceProfile>((resolve, reject) => {
+    return new Promise<JobRecord>((resolve, reject) => {
       const request = new XMLHttpRequest();
       request.open("POST", `${baseUrl}/api/voice-profiles/upload`);
       request.upload.onprogress = (event) => {
@@ -70,16 +98,36 @@ export const api = {
       };
       request.onload = () => {
         if (request.status >= 200 && request.status < 300) {
-          resolve(JSON.parse(request.responseText) as VoiceProfile);
+          resolve(JSON.parse(request.responseText) as JobRecord);
           return;
         }
         reject(new Error(request.responseText || "Upload failed"));
       };
       request.timeout = 15 * 60 * 1000;
-      request.onerror = () =>
-        reject(new Error(`Backend unavailable at ${baseUrl}. Start the backend with npm run dev or npm run backend:dev.`));
-      request.ontimeout = () =>
-        reject(new Error("Profile upload timed out while waiting for the backend to respond."));
+      request.onerror = () => {
+        void recoverJob(payload.clientJobId)
+          .then((job) => {
+            if (job) {
+              resolve(job);
+              return;
+            }
+            reject(new Error(`Backend unavailable at ${baseUrl}. Start the backend with npm run dev or npm run backend:dev.`));
+          })
+          .catch(() =>
+            reject(new Error(`Backend unavailable at ${baseUrl}. Start the backend with npm run dev or npm run backend:dev.`)),
+          );
+      };
+      request.ontimeout = () => {
+        void recoverJob(payload.clientJobId)
+          .then((job) => {
+            if (job) {
+              resolve(job);
+              return;
+            }
+            reject(new Error("Profile upload timed out while waiting for the backend to respond."));
+          })
+          .catch(() => reject(new Error("Profile upload timed out while waiting for the backend to respond.")));
+      };
       request.onabort = () => reject(new Error("Profile upload was aborted."));
       request.send(form);
     });

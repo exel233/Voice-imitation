@@ -16,6 +16,7 @@ import soundfile as sf
 from scipy import signal
 
 from .audio_pipeline import TARGET_SAMPLE_RATE, load_conditioning_artifact, normalize_audio
+from .config import env_str
 from .media_tools import resolve_ffprobe
 from .models import SynthesisControls, TranscriptSegment, VoiceProfile
 
@@ -151,10 +152,11 @@ class XttsTtsProvider(TtsProvider):
     name = "xtts"
     label = "Coqui XTTS-v2"
     cloning_capable = True
-    _shared_tts = None
+    _shared_tts_by_device: dict[str, object] = {}
 
     def __init__(self) -> None:
         self._tts = None
+        self._device = None
 
     def is_available(self) -> bool:
         return importlib.util.find_spec("TTS") is not None and self._tos_accepted()
@@ -189,17 +191,33 @@ class XttsTtsProvider(TtsProvider):
     def _get_tts(self):
         if self._tts is not None:
             return self._tts
-        if self.__class__._shared_tts is not None:
-            self._tts = self.__class__._shared_tts
-            return self._tts
         self._patch_torch_load_for_xtts()
         self._patch_torchaudio_load_for_xtts()
         from TTS.api import TTS
 
-        device = "cuda" if importlib.util.find_spec("torch") and _cuda_available() else "cpu"
-        self._tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
-        self.__class__._shared_tts = self._tts
-        return self._tts
+        requested_device = _preferred_tts_device()
+        candidates = _xtts_device_candidates(requested_device)
+        errors: list[str] = []
+
+        for device in candidates:
+            shared = self.__class__._shared_tts_by_device.get(device)
+            if shared is not None:
+                self._tts = shared
+                self._device = device
+                return self._tts
+            try:
+                instance = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+                self.__class__._shared_tts_by_device[device] = instance
+                self._tts = instance
+                self._device = device
+                return self._tts
+            except Exception as exc:
+                errors.append(f"{device}: {exc}")
+                if device == "cuda":
+                    continue
+                raise
+
+        raise RuntimeError("XTTS initialization failed. " + " | ".join(errors))
 
     def _tos_accepted(self) -> bool:
         return os.environ.get("COQUI_TOS_AGREED") == "1"
@@ -276,6 +294,23 @@ def _cuda_available() -> bool:
 
         return bool(torch.cuda.is_available())
     return False
+
+
+def _preferred_tts_device() -> str:
+    requested = env_str("VOICE_STUDIO_DEVICE", "auto").strip().lower()
+    if requested in {"cpu", "cuda", "auto"}:
+        return requested
+    return "auto"
+
+
+def _xtts_device_candidates(requested: str) -> list[str]:
+    if requested == "cpu":
+        return ["cpu"]
+    if requested == "cuda":
+        return ["cuda", "cpu"]
+    if _cuda_available():
+        return ["cuda", "cpu"]
+    return ["cpu"]
 
 
 def probe_duration_seconds(input_path: str) -> float:

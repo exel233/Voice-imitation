@@ -4,12 +4,14 @@ import json
 import math
 import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 import librosa
 import numpy as np
 import soundfile as sf
 
+from .media_tools import resolve_ffmpeg
 from .models import ProfileDiagnostics, VoiceSampleRecord
 from .storage import new_id, profile_artifacts_dir, profile_preview_dir, profile_processed_dir, profile_raw_dir
 
@@ -34,14 +36,22 @@ def ingest_uploaded_bytes(profile_id: str, filename: str, payload: bytes) -> Voi
     suffix = Path(filename).suffix.lower()
     if suffix not in SUPPORTED_AUDIO_EXTENSIONS:
         raise ValueError(f"Unsupported audio format: {suffix}")
-    sample_id = new_id("sample")
-    raw_target = profile_raw_dir(profile_id) / f"{sample_id}{suffix}"
-    raw_target.write_bytes(payload)
+    sample_id, raw_target = stage_uploaded_bytes(profile_id, filename, payload)
     return preprocess_sample(profile_id, sample_id, raw_target, filename)
 
 
+def stage_uploaded_bytes(profile_id: str, filename: str, payload: bytes) -> tuple[str, Path]:
+    suffix = Path(filename).suffix.lower()
+    if suffix not in SUPPORTED_AUDIO_EXTENSIONS:
+        raise ValueError(f"Unsupported audio format: {suffix}")
+    sample_id = new_id("sample")
+    raw_target = profile_raw_dir(profile_id) / f"{sample_id}{suffix}"
+    raw_target.write_bytes(payload)
+    return sample_id, raw_target
+
+
 def preprocess_sample(profile_id: str, sample_id: str, raw_path: Path, original_name: str) -> VoiceSampleRecord:
-    audio, sr = librosa.load(raw_path, sr=TARGET_SAMPLE_RATE, mono=True)
+    audio, sr = load_audio_for_processing(raw_path)
     if audio.size == 0:
         raise ValueError("Uploaded sample is empty")
 
@@ -63,6 +73,46 @@ def preprocess_sample(profile_id: str, sample_id: str, raw_path: Path, original_
         channels=1,
         warnings=warnings,
     )
+
+
+def load_audio_for_processing(source_path: Path) -> tuple[np.ndarray, int]:
+    try:
+        audio, sr = librosa.load(source_path, sr=TARGET_SAMPLE_RATE, mono=True)
+        return audio, sr
+    except Exception as exc:
+        ffmpeg = resolve_ffmpeg()
+        if not ffmpeg:
+            raise ValueError(
+                f"Could not decode audio file '{source_path.name}'. Install FFmpeg or convert the sample to WAV/MP3 first."
+            ) from exc
+
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
+            temp_path = Path(temp_file.name)
+        try:
+            result = subprocess.run(
+                [
+                    ffmpeg,
+                    "-y",
+                    "-i",
+                    str(source_path),
+                    "-ac",
+                    "1",
+                    "-ar",
+                    str(TARGET_SAMPLE_RATE),
+                    str(temp_path),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if result.returncode != 0 or not temp_path.exists():
+                stderr = (result.stderr or "").strip().splitlines()
+                detail = stderr[-1] if stderr else f"ffmpeg exited with code {result.returncode}"
+                raise ValueError(f"Could not decode audio file '{source_path.name}': {detail}") from exc
+            audio, sr = librosa.load(temp_path, sr=TARGET_SAMPLE_RATE, mono=True)
+            return audio, sr
+        finally:
+            temp_path.unlink(missing_ok=True)
 
 
 def normalize_audio(audio: np.ndarray) -> np.ndarray:

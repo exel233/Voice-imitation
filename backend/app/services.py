@@ -1,15 +1,17 @@
 from __future__ import annotations
 
 import contextlib
+import json
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
-from .audio_pipeline import build_profile_artifacts, create_media_preview_excerpt, ingest_sample_from_path, ingest_uploaded_bytes, synthesize_quick_profile_preview
+from .audio_pipeline import build_profile_artifacts, create_media_preview_excerpt, ingest_sample_from_path, ingest_uploaded_bytes, stage_uploaded_bytes, synthesize_quick_profile_preview
 from .media_tools import resolve_ffmpeg
 from .models import AppSettings, CreateVoiceProfileRequest, JobRecord, ProjectRecord, ReplacementRequest, TtsRequest, VoiceProfile
 from .provider_registry import resolve_asr_provider, resolve_tts_provider
-from .storage import CACHE, OUTPUTS, load_settings, new_id, now_iso, read_profile, save_job, save_profile, save_project
+from .storage import CACHE, OUTPUTS, load_settings, new_id, now_iso, profile_artifacts_dir, read_job, read_profile, save_job, save_profile, save_project
 
 PROFILE_PREVIEW_TEXT = "This preview checks whether the saved profile is shaping the generated voice."
 
@@ -51,29 +53,78 @@ class VoiceProfileService:
         authorized: bool,
         files: list[tuple[str, bytes]],
         client_job_id: str | None = None,
-    ) -> VoiceProfile:
+    ) -> JobRecord:
         profile_id = new_id("profile")
         job = self.jobs.create("voice_profile.build", client_job_id=client_job_id)
-        try:
-            self.jobs.update(job, status="running", progress=0.08, step="Receiving upload", message="Upload complete, preparing samples")
-            samples = []
-            total = max(len(files), 1)
-            for index, (filename, payload) in enumerate(files, start=1):
-                samples.append(ingest_uploaded_bytes(profile_id, filename, payload))
-                job = self.jobs.update(
-                    job,
-                    progress=0.15 + (0.35 * index / total),
-                    step="Preprocessing samples",
-                    message=f"Processed sample {index} of {total}",
-                )
-            profile = self._finalize_profile(profile_id, name, description, authorized, samples, job)
-            self.jobs.update(job, status="completed", progress=1, step="Completed", message=f"Profile ready: {profile.name}")
-            return profile
-        except Exception as exc:
-            self.jobs.update(job, status="failed", progress=1, step="Failed", message=str(exc))
-            raise
+        timestamp = now_iso()
+        placeholder = VoiceProfile(
+            id=profile_id,
+            name=name,
+            description=description,
+            createdAt=timestamp,
+            updatedAt=timestamp,
+            authorizedUseConfirmed=authorized,
+            status="processing",
+            requestedProvider=self.requested_provider,
+            synthesisProvider=self.provider.name,
+            cloningCapable=self.provider.cloning_capable,
+            fallbackReason=self.provider_resolution_note,
+            metadata={"profileBuilder": "audio_preprocessing -> speaker_profile_builder -> speaker_profile_store"},
+        )
+        save_profile(placeholder)
+        job = self.jobs.update(
+            job,
+            status="running",
+            progress=0.05,
+            step="Receiving upload",
+            message="Upload received, building profile in background",
+            resultId=profile_id,
+        )
 
-    def _finalize_profile(self, profile_id: str, name: str, description: str, authorized: bool, samples, job: JobRecord | None = None) -> VoiceProfile:
+        manifest = {"samples": []}
+        for filename, payload in files:
+            sample_id, raw_path = stage_uploaded_bytes(profile_id, filename, payload)
+            manifest["samples"].append(
+                {
+                    "sampleId": sample_id,
+                    "originalName": filename,
+                    "rawPath": str(raw_path.resolve()),
+                }
+            )
+        manifest_path = profile_artifacts_dir(profile_id) / "upload_manifest.json"
+        manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+        subprocess.Popen(
+            [
+                sys.executable,
+                "-m",
+                "backend.app.profile_build_worker",
+                "--profile-id",
+                profile_id,
+                "--job-id",
+                job.id,
+                "--name",
+                name,
+                "--description",
+                description,
+                *(["--authorized"] if authorized else []),
+            ],
+            cwd=str(Path(__file__).resolve().parents[2]),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        return job
+
+    def _finalize_profile(
+        self,
+        profile_id: str,
+        name: str,
+        description: str,
+        authorized: bool,
+        samples,
+        job: JobRecord | None = None,
+        *,
+        generate_quick_preview: bool = True,
+    ) -> VoiceProfile:
         timestamp = now_iso()
         if job:
             self.jobs.update(job, progress=0.62, step="Building conditioning assets", message="Computing reusable speaker profile artifacts")
@@ -119,9 +170,19 @@ class VoiceProfileService:
                 "profileBuilder": "audio_preprocessing -> speaker_profile_builder -> speaker_profile_store",
             },
         )
-        if job:
-            self.jobs.update(job, progress=0.82, step="Rendering preview", message="Generating quick profile preview")
-        profile.quickPreviewAudioPath = synthesize_quick_profile_preview(profile_id, self.provider, profile, PROFILE_PREVIEW_TEXT)
+        if generate_quick_preview:
+            if job:
+                self.jobs.update(job, progress=0.82, step="Rendering preview", message="Generating quick profile preview")
+            profile.quickPreviewAudioPath = synthesize_quick_profile_preview(profile_id, self.provider, profile, PROFILE_PREVIEW_TEXT)
+        else:
+            profile.diagnostics = profile.diagnostics.model_copy(
+                update={
+                    "notes": [
+                        *profile.diagnostics.notes,
+                        "Quick XTTS preview is deferred so profile creation completes faster on CPU.",
+                    ]
+                }
+            )
         return save_profile(profile)
 
 
@@ -156,6 +217,10 @@ class JobService:
         if logs:
             current_logs.extend(logs)
         return save_job(job.model_copy(update={"updatedAt": now_iso(), "logs": current_logs, **changes}))
+
+    def get(self, job_id: str) -> JobRecord:
+        return read_job(job_id)
+
 
 
 class SegmentService:

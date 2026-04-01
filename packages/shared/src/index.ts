@@ -97,6 +97,7 @@ export const jobSchema = z.object({
   updatedAt: z.string(),
   projectId: z.string().optional(),
   outputPath: z.string().optional(),
+  resultId: z.string().optional(),
 });
 
 export const settingsSchema = z.object({

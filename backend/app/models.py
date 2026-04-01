@@ -82,6 +82,7 @@ class JobRecord(BaseModel):
     updatedAt: str
     projectId: str | None = None
     outputPath: str | None = None
+    resultId: str | None = None
 
 
 class AppSettings(BaseModel):

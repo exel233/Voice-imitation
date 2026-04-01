@@ -1,0 +1,553 @@
+
+> voice-imitation-studio@0.1.0 backend:dev
+> node scripts/run_backend.cjs --port 8765
+
+INFO:     127.0.0.1:63409 - "GET /api/setup-status HTTP/1.1" 200 OK
+ > tts_models/multilingual/multi-dataset/xtts_v2 is already downloaded.
+ > Using model: xtts
+['This preview checks whether the saved profile is shaping the generated voice.']
+ > Processing time: 8.129661083221436
+ > Real-time factor: 1.464726000825538
+INFO:     127.0.0.1:63440 - "POST /api/voice-profiles/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63535 - "GET /api/jobs/job_profile_kathleen65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63534 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 78196. Attempting cleanup.
+[run_backend] Stopped PID 78196.
+INFO:     127.0.0.1:63566 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63566 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 111152. Attempting cleanup.
+[run_backend] Stopped PID 111152.
+INFO:     127.0.0.1:63575 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63575 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63575 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63575 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 107768. Attempting cleanup.
+[run_backend] Stopped PID 107768.
+INFO:     127.0.0.1:63602 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63602 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 108276. Attempting cleanup.
+[run_backend] Stopped PID 108276.
+INFO:     127.0.0.1:63632 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63632 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 116980. Attempting cleanup.
+[run_backend] Stopped PID 116980.
+INFO:     127.0.0.1:63645 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63645 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63645 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63645 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 115680. Attempting cleanup.
+[run_backend] Stopped PID 115680.
+INFO:     127.0.0.1:63669 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 90552. Attempting cleanup.
+[run_backend] Stopped PID 90552.
+INFO:     127.0.0.1:63681 - "OPTIONS /api/voice-profiles/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63682 - "POST /api/voice-profiles/upload HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:63681 - "GET /api/jobs/job_profile_mngla0xv HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63679 - "GET /api/jobs/job_profile_mngla0xv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63679 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63679 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63679 - "GET /api/jobs/job_profile_mngla0xv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63681 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63681 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63679 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63679 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 100500. Attempting cleanup.
+[run_backend] Stopped PID 100500.
+INFO:     127.0.0.1:63687 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63687 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63687 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63687 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 86280. Attempting cleanup.
+[run_backend] Stopped PID 86280.
+INFO:     127.0.0.1:63717 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63717 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 114352. Attempting cleanup.
+[run_backend] Stopped PID 114352.
+INFO:     127.0.0.1:63727 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63727 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63727 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63727 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 101888. Attempting cleanup.
+[run_backend] Stopped PID 101888.
+INFO:     127.0.0.1:63739 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63739 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 116056. Attempting cleanup.
+[run_backend] Stopped PID 116056.
+INFO:     127.0.0.1:63772 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63772 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63775 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63775 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63776 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63776 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63778 - "GET /api/media?path=D%3A%5CCODE%5Ccode%5Cforfun%5CVoice%20imitation%5Cstorage%5Cprofile_data%5Cprofile_bc5aea300bd0%5Cpreviews%5Cquick_preview.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:63777 - "GET /api/media?path=D%3A%5CCODE%5Ccode%5Cforfun%5CVoice%20imitation%5Cstorage%5Cprofile_data%5Cprofile_bc5aea300bd0%5Cprocessed%5Csample_156dce8f4624.wav HTTP/1.1" 206 Partial Content
+[run_backend] Port 8765 is already in use by PID(s): 115352. Attempting cleanup.
+[run_backend] Stopped PID 115352.
+INFO:     127.0.0.1:63789 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63789 - "OPTIONS /api/voice-profiles/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63789 - "POST /api/voice-profiles/upload HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:63793 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63797 - "GET /api/jobs/job_profile_mnglbb6x HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "GET /api/jobs/job_profile_mnglbb6x HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63793 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63797 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63797 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63797 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63798 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63798 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 90136. Attempting cleanup.
+[run_backend] Stopped PID 90136.
+INFO:     127.0.0.1:63811 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63811 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 113360. Attempting cleanup.
+[run_backend] Stopped PID 113360.
+INFO:     127.0.0.1:64072 - "GET /api/media?path=D%3A%5CCODE%5Ccode%5Cforfun%5CVoice%20imitation%5Cstorage%5Cprofile_data%5Cprofile_bc5aea300bd0%5Cprocessed%5Csample_156dce8f4624.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64077 - "GET /api/media?path=D%3A%5CCODE%5Ccode%5Cforfun%5CVoice%20imitation%5Cstorage%5Cprofile_data%5Cprofile_bc5aea300bd0%5Cpreviews%5Cquick_preview.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64077 - "GET /api/media?path=D%3A%5CCODE%5Ccode%5Cforfun%5CVoice%20imitation%5Cstorage%5Cprofile_data%5Cprofile_bc5aea300bd0%5Cprocessed%5Csample_156dce8f4624.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64078 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64078 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64079 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64079 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 114276. Attempting cleanup.
+[run_backend] Stopped PID 114276.
+[run_backend] Port 8765 is already in use by PID(s): 111988. Attempting cleanup.
+[run_backend] Stopped PID 111988.
+INFO:     127.0.0.1:64121 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64121 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64122 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64122 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64121 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 101400. Attempting cleanup.
+[run_backend] Stopped PID 101400.
+INFO:     127.0.0.1:64132 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64132 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64132 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 103320. Attempting cleanup.
+[run_backend] Stopped PID 103320.
+INFO:     127.0.0.1:64157 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64157 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64157 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 73976. Attempting cleanup.
+[run_backend] Stopped PID 73976.
+INFO:     127.0.0.1:64166 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64166 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64166 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 113312. Attempting cleanup.
+[run_backend] Stopped PID 113312.
+INFO:     127.0.0.1:64187 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64187 - "GET /api/jobs/job_profile_mngld20i HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64541 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64543 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64543 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64620 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64620 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 16836. Attempting cleanup.
+[run_backend] Stopped PID 16836.
+[run_backend] Port 8765 is already in use by PID(s): 109968. Attempting cleanup.
+[run_backend] Stopped PID 109968.
+[run_backend] Port 8765 is already in use by PID(s): 109516. Attempting cleanup.
+[run_backend] Stopped PID 109516.
+[run_backend] Port 8765 is already in use by PID(s): 90376. Attempting cleanup.
+[run_backend] Stopped PID 90376.
+INFO:     127.0.0.1:64675 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64675 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 81472. Attempting cleanup.
+[run_backend] Stopped PID 81472.
+[run_backend] Port 8765 is already in use by PID(s): 116872. Attempting cleanup.
+[run_backend] Stopped PID 116872.
+[run_backend] Port 8765 is already in use by PID(s): 116612. Attempting cleanup.
+[run_backend] Stopped PID 116612.
+INFO:     127.0.0.1:64707 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 116620. Attempting cleanup.
+[run_backend] Stopped PID 116620.
+[run_backend] Port 8765 is already in use by PID(s): 111280. Attempting cleanup.
+[run_backend] Stopped PID 111280.
+INFO:     127.0.0.1:64718 - "POST /api/voice-profiles/upload HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 117164. Attempting cleanup.
+[run_backend] Stopped PID 117164.
+INFO:     127.0.0.1:64728 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64729 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64730 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 69724. Attempting cleanup.
+[run_backend] Stopped PID 69724.
+INFO:     127.0.0.1:64736 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 87420. Attempting cleanup.
+[run_backend] Stopped PID 87420.
+INFO:     127.0.0.1:64742 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 86024. Attempting cleanup.
+[run_backend] Stopped PID 86024.
+INFO:     127.0.0.1:64756 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 112368. Attempting cleanup.
+[run_backend] Stopped PID 112368.
+INFO:     127.0.0.1:64762 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 112844. Attempting cleanup.
+[run_backend] Stopped PID 112844.
+INFO:     127.0.0.1:64770 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 64144. Attempting cleanup.
+[run_backend] Stopped PID 64144.
+INFO:     127.0.0.1:64776 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 109908. Attempting cleanup.
+[run_backend] Stopped PID 109908.
+INFO:     127.0.0.1:64782 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 114612. Attempting cleanup.
+[run_backend] Stopped PID 114612.
+INFO:     127.0.0.1:64788 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 111292. Attempting cleanup.
+[run_backend] Stopped PID 111292.
+INFO:     127.0.0.1:64794 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 105716. Attempting cleanup.
+[run_backend] Stopped PID 105716.
+INFO:     127.0.0.1:64800 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 112204. Attempting cleanup.
+[run_backend] Stopped PID 112204.
+INFO:     127.0.0.1:64816 - "GET /api/jobs/job_profile_async65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 107332. Attempting cleanup.
+[run_backend] Stopped PID 107332.
+[run_backend] Port 8765 is already in use by PID(s): 114124. Attempting cleanup.
+[run_backend] Stopped PID 114124.
+[run_backend] Port 8765 is already in use by PID(s): 117184. Attempting cleanup.
+[run_backend] Stopped PID 117184.
+[run_backend] Port 8765 is already in use by PID(s): 114812. Attempting cleanup.
+[run_backend] Stopped PID 114812.
+[run_backend] Port 8765 is already in use by PID(s): 24716. Attempting cleanup.
+[run_backend] Stopped PID 24716.
+[run_backend] Port 8765 is already in use by PID(s): 117308. Attempting cleanup.
+[run_backend] Stopped PID 117308.
+[run_backend] Port 8765 is already in use by PID(s): 90172. Attempting cleanup.
+[run_backend] Stopped PID 90172.
+[run_backend] Port 8765 is already in use by PID(s): 116800. Attempting cleanup.
+[run_backend] Stopped PID 116800.
+[run_backend] Port 8765 is already in use by PID(s): 108196. Attempting cleanup.
+[run_backend] Stopped PID 108196.
+[run_backend] Port 8765 is already in use by PID(s): 109036. Attempting cleanup.
+[run_backend] Stopped PID 109036.
+[run_backend] Port 8765 is already in use by PID(s): 117016. Attempting cleanup.
+[run_backend] Stopped PID 117016.
+[run_backend] Port 8765 is already in use by PID(s): 107840. Attempting cleanup.
+[run_backend] Stopped PID 107840.
+[run_backend] Port 8765 is already in use by PID(s): 117592. Attempting cleanup.
+[run_backend] Stopped PID 117592.
+[run_backend] Port 8765 is already in use by PID(s): 116436. Attempting cleanup.
+[run_backend] Stopped PID 116436.
+[run_backend] Port 8765 is already in use by PID(s): 112300. Attempting cleanup.
+[run_backend] Stopped PID 112300.
+[run_backend] Port 8765 is already in use by PID(s): 112068. Attempting cleanup.
+[run_backend] Stopped PID 112068.
+[run_backend] Port 8765 is already in use by PID(s): 108664. Attempting cleanup.
+[run_backend] Stopped PID 108664.
+[run_backend] Port 8765 is already in use by PID(s): 111588. Attempting cleanup.
+[run_backend] Stopped PID 111588.
+[run_backend] Port 8765 is already in use by PID(s): 97252. Attempting cleanup.
+[run_backend] Stopped PID 97252.
+[run_backend] Port 8765 is already in use by PID(s): 109108. Attempting cleanup.
+[run_backend] Stopped PID 109108.
+[run_backend] Port 8765 is already in use by PID(s): 113304. Attempting cleanup.
+[run_backend] Stopped PID 113304.
+[run_backend] Port 8765 is already in use by PID(s): 111264. Attempting cleanup.
+[run_backend] Stopped PID 111264.
+[run_backend] Port 8765 is already in use by PID(s): 17412. Attempting cleanup.
+[run_backend] Stopped PID 17412.
+[run_backend] Port 8765 is already in use by PID(s): 87244. Attempting cleanup.
+[run_backend] Stopped PID 87244.
+[run_backend] Port 8765 is already in use by PID(s): 79688. Attempting cleanup.
+[run_backend] Stopped PID 79688.
+[run_backend] Port 8765 is already in use by PID(s): 107500. Attempting cleanup.
+[run_backend] Stopped PID 107500.
+[run_backend] Port 8765 is already in use by PID(s): 116720. Attempting cleanup.
+[run_backend] Stopped PID 116720.
+INFO:     127.0.0.1:65072 - "POST /api/voice-profiles/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65073 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65074 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65075 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 117656. Attempting cleanup.
+[run_backend] Stopped PID 117656.
+INFO:     127.0.0.1:65081 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 103012. Attempting cleanup.
+[run_backend] Stopped PID 103012.
+INFO:     127.0.0.1:65087 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 101552. Attempting cleanup.
+[run_backend] Stopped PID 101552.
+INFO:     127.0.0.1:65094 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 114756. Attempting cleanup.
+[run_backend] Stopped PID 114756.
+INFO:     127.0.0.1:65098 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 75144. Attempting cleanup.
+[run_backend] Stopped PID 75144.
+INFO:     127.0.0.1:65106 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 89536. Attempting cleanup.
+[run_backend] Stopped PID 89536.
+INFO:     127.0.0.1:65113 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65120 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65131 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 96500. Attempting cleanup.
+[run_backend] Stopped PID 96500.
+INFO:     127.0.0.1:65135 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 108264. Attempting cleanup.
+[run_backend] Stopped PID 108264.
+INFO:     127.0.0.1:65143 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 80952. Attempting cleanup.
+[run_backend] Stopped PID 80952.
+INFO:     127.0.0.1:65149 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 108500. Attempting cleanup.
+[run_backend] Stopped PID 108500.
+INFO:     127.0.0.1:65155 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 116800. Attempting cleanup.
+[run_backend] Stopped PID 116800.
+INFO:     127.0.0.1:65161 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 103232. Attempting cleanup.
+[run_backend] Stopped PID 103232.
+INFO:     127.0.0.1:65168 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 74144. Attempting cleanup.
+[run_backend] Stopped PID 74144.
+INFO:     127.0.0.1:65175 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 115876. Attempting cleanup.
+[run_backend] Stopped PID 115876.
+INFO:     127.0.0.1:65190 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 106388. Attempting cleanup.
+[run_backend] Stopped PID 106388.
+INFO:     127.0.0.1:65196 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 115860. Attempting cleanup.
+[run_backend] Stopped PID 115860.
+INFO:     127.0.0.1:65208 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 117236. Attempting cleanup.
+[run_backend] Stopped PID 117236.
+INFO:     127.0.0.1:65216 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 111104. Attempting cleanup.
+[run_backend] Stopped PID 111104.
+INFO:     127.0.0.1:65222 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 76128. Attempting cleanup.
+[run_backend] Stopped PID 76128.
+INFO:     127.0.0.1:65228 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 115400. Attempting cleanup.
+[run_backend] Stopped PID 115400.
+INFO:     127.0.0.1:65232 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 117440. Attempting cleanup.
+[run_backend] Stopped PID 117440.
+INFO:     127.0.0.1:65250 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 101136. Attempting cleanup.
+[run_backend] Stopped PID 101136.
+INFO:     127.0.0.1:65256 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 90300. Attempting cleanup.
+[run_backend] Stopped PID 90300.
+INFO:     127.0.0.1:65262 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 112936. Attempting cleanup.
+[run_backend] Stopped PID 112936.
+INFO:     127.0.0.1:65270 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 109780. Attempting cleanup.
+[run_backend] Stopped PID 109780.
+INFO:     127.0.0.1:65274 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 116480. Attempting cleanup.
+[run_backend] Stopped PID 116480.
+INFO:     127.0.0.1:65282 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 110412. Attempting cleanup.
+[run_backend] Stopped PID 110412.
+INFO:     127.0.0.1:65288 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 114224. Attempting cleanup.
+[run_backend] Stopped PID 114224.
+INFO:     127.0.0.1:65304 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 115524. Attempting cleanup.
+[run_backend] Stopped PID 115524.
+INFO:     127.0.0.1:65310 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 73432. Attempting cleanup.
+[run_backend] Stopped PID 73432.
+INFO:     127.0.0.1:65314 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 108164. Attempting cleanup.
+[run_backend] Stopped PID 108164.
+INFO:     127.0.0.1:65324 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 108968. Attempting cleanup.
+[run_backend] Stopped PID 108968.
+INFO:     127.0.0.1:65328 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 114876. Attempting cleanup.
+[run_backend] Stopped PID 114876.
+INFO:     127.0.0.1:65336 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 117588. Attempting cleanup.
+[run_backend] Stopped PID 117588.
+INFO:     127.0.0.1:65342 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 112684. Attempting cleanup.
+[run_backend] Stopped PID 112684.
+INFO:     127.0.0.1:65349 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 17712. Attempting cleanup.
+[run_backend] Stopped PID 17712.
+INFO:     127.0.0.1:65366 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 102256. Attempting cleanup.
+[run_backend] Stopped PID 102256.
+INFO:     127.0.0.1:65372 - "GET /api/jobs/job_profile_async65b_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 116284. Attempting cleanup.
+[run_backend] Stopped PID 116284.
+[run_backend] Port 8765 is already in use by PID(s): 117252. Attempting cleanup.
+[run_backend] Stopped PID 117252.
+[run_backend] Port 8765 is already in use by PID(s): 105992. Attempting cleanup.
+[run_backend] Stopped PID 105992.
+[run_backend] Port 8765 is already in use by PID(s): 107148. Attempting cleanup.
+[run_backend] Stopped PID 107148.
+[run_backend] Port 8765 is already in use by PID(s): 115580. Attempting cleanup.
+[run_backend] Stopped PID 115580.
+[run_backend] Port 8765 is already in use by PID(s): 87092. Attempting cleanup.
+[run_backend] Stopped PID 87092.
+[run_backend] Port 8765 is already in use by PID(s): 10848. Attempting cleanup.
+[run_backend] Stopped PID 10848.
+[run_backend] Port 8765 is already in use by PID(s): 111320. Attempting cleanup.
+[run_backend] Stopped PID 111320.
+[run_backend] Port 8765 is already in use by PID(s): 92108. Attempting cleanup.
+[run_backend] Stopped PID 92108.
+[run_backend] Port 8765 is already in use by PID(s): 113036. Attempting cleanup.
+[run_backend] Stopped PID 113036.
+[run_backend] Port 8765 is already in use by PID(s): 106256. Attempting cleanup.
+[run_backend] Stopped PID 106256.
+[run_backend] Port 8765 is already in use by PID(s): 83164. Attempting cleanup.
+[run_backend] Stopped PID 83164.
+[run_backend] Port 8765 is already in use by PID(s): 117612. Attempting cleanup.
+[run_backend] Stopped PID 117612.
+[run_backend] Port 8765 is already in use by PID(s): 99544. Attempting cleanup.
+[run_backend] Stopped PID 99544.
+[run_backend] Port 8765 is already in use by PID(s): 116576. Attempting cleanup.
+[run_backend] Stopped PID 116576.
+[run_backend] Port 8765 is already in use by PID(s): 92108. Attempting cleanup.
+[run_backend] Stopped PID 92108.
+[run_backend] Port 8765 is already in use by PID(s): 86496. Attempting cleanup.
+[run_backend] Stopped PID 86496.
+[run_backend] Port 8765 is already in use by PID(s): 77600. Attempting cleanup.
+[run_backend] Stopped PID 77600.
+[run_backend] Port 8765 is already in use by PID(s): 76140. Attempting cleanup.
+[run_backend] Stopped PID 76140.
+[run_backend] Port 8765 is already in use by PID(s): 98052. Attempting cleanup.
+[run_backend] Stopped PID 98052.
+[run_backend] Port 8765 is already in use by PID(s): 115908. Attempting cleanup.
+[run_backend] Stopped PID 115908.
+[run_backend] Port 8765 is already in use by PID(s): 111888. Attempting cleanup.
+[run_backend] Stopped PID 111888.
+[run_backend] Port 8765 is already in use by PID(s): 74100. Attempting cleanup.
+[run_backend] Stopped PID 74100.
+[run_backend] Port 8765 is already in use by PID(s): 111024. Attempting cleanup.
+[run_backend] Stopped PID 111024.
+[run_backend] Port 8765 is already in use by PID(s): 95088. Attempting cleanup.
+[run_backend] Stopped PID 95088.
+[run_backend] Port 8765 is already in use by PID(s): 111460. Attempting cleanup.
+[run_backend] Stopped PID 111460.
+[run_backend] Port 8765 is already in use by PID(s): 83476. Attempting cleanup.
+[run_backend] Stopped PID 83476.
+INFO:     127.0.0.1:49206 - "GET /api/setup-status HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 87420. Attempting cleanup.
+[run_backend] Stopped PID 87420.
+[run_backend] Port 8765 is already in use by PID(s): 74772. Attempting cleanup.
+[run_backend] Stopped PID 74772.
+[run_backend] Port 8765 is already in use by PID(s): 99480. Attempting cleanup.
+[run_backend] Stopped PID 99480.
+INFO:     127.0.0.1:49235 - "POST /api/voice-profiles/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49236 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 112248. Attempting cleanup.
+[run_backend] Stopped PID 112248.
+INFO:     127.0.0.1:49247 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 78648. Attempting cleanup.
+[run_backend] Stopped PID 78648.
+INFO:     127.0.0.1:49254 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 97336. Attempting cleanup.
+[run_backend] Stopped PID 97336.
+INFO:     127.0.0.1:49265 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49268 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49269 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49272 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 115500. Attempting cleanup.
+[run_backend] Stopped PID 115500.
+INFO:     127.0.0.1:49282 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49288 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49299 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 101900. Attempting cleanup.
+[run_backend] Stopped PID 101900.
+INFO:     127.0.0.1:49309 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49314 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49315 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 58336. Attempting cleanup.
+[run_backend] Stopped PID 58336.
+INFO:     127.0.0.1:49320 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49325 - "GET /api/jobs/job_profile_worker65_smoke HTTP/1.1" 200 OK
+[run_backend] Port 8765 is already in use by PID(s): 117392. Attempting cleanup.
+[run_backend] Stopped PID 117392.
+[run_backend] Port 8765 is already in use by PID(s): 113592. Attempting cleanup.
+[run_backend] Stopped PID 113592.
+[run_backend] Port 8765 is already in use by PID(s): 108964. Attempting cleanup.
+[run_backend] Stopped PID 108964.
+[run_backend] Port 8765 is already in use by PID(s): 110832. Attempting cleanup.
+[run_backend] Stopped PID 110832.
+[run_backend] Port 8765 is already in use by PID(s): 60612. Attempting cleanup.
+[run_backend] Stopped PID 60612.
+[run_backend] Port 8765 is already in use by PID(s): 99776. Attempting cleanup.
+[run_backend] Stopped PID 99776.
+[run_backend] Port 8765 is already in use by PID(s): 116764. Attempting cleanup.
+[run_backend] Stopped PID 116764.
+[run_backend] Port 8765 is already in use by PID(s): 114696. Attempting cleanup.
+[run_backend] Stopped PID 114696.
+[run_backend] Port 8765 is already in use by PID(s): 112516. Attempting cleanup.
+[run_backend] Stopped PID 112516.
+[run_backend] Port 8765 is already in use by PID(s): 111896. Attempting cleanup.
+[run_backend] Stopped PID 111896.
+[run_backend] Port 8765 is already in use by PID(s): 106896. Attempting cleanup.
+[run_backend] Stopped PID 106896.
+[run_backend] Port 8765 is already in use by PID(s): 77716. Attempting cleanup.
+[run_backend] Stopped PID 77716.
+[run_backend] Port 8765 is already in use by PID(s): 110204. Attempting cleanup.
+[run_backend] Stopped PID 110204.
+[run_backend] Port 8765 is already in use by PID(s): 116940. Attempting cleanup.
+[run_backend] Stopped PID 116940.
+[run_backend] Port 8765 is already in use by PID(s): 108944. Attempting cleanup.
+[run_backend] Stopped PID 108944.
+[run_backend] Port 8765 is already in use by PID(s): 116832. Attempting cleanup.
+[run_backend] Stopped PID 116832.
+[run_backend] Port 8765 is already in use by PID(s): 113200. Attempting cleanup.
+[run_backend] Stopped PID 113200.
+[run_backend] Port 8765 is already in use by PID(s): 17264. Attempting cleanup.
+[run_backend] Stopped PID 17264.
+[run_backend] Port 8765 is already in use by PID(s): 104208. Attempting cleanup.
+[run_backend] Stopped PID 104208.
+[run_backend] Port 8765 is already in use by PID(s): 108632. Attempting cleanup.
+[run_backend] Stopped PID 108632.
+[run_backend] Port 8765 is already in use by PID(s): 116776. Attempting cleanup.
+[run_backend] Stopped PID 116776.
+[run_backend] Port 8765 is already in use by PID(s): 97788. Attempting cleanup.
+[run_backend] Stopped PID 97788.
+[run_backend] Port 8765 is already in use by PID(s): 116144. Attempting cleanup.
+[run_backend] Stopped PID 116144.
+[run_backend] Port 8765 is already in use by PID(s): 116164. Attempting cleanup.
+[run_backend] Stopped PID 116164.
+[run_backend] Port 8765 is already in use by PID(s): 115592. Attempting cleanup.
+[run_backend] Stopped PID 115592.
+[run_backend] Port 8765 is already in use by PID(s): 116092. Attempting cleanup.
+[run_backend] Stopped PID 116092.
+INFO:     127.0.0.1:49923 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49923 - "GET /api/setup-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49927 - "GET /api/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49927 - "GET /api/setup-status HTTP/1.1" 200 OK
