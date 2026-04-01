@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+.vite/
+.venv/
+__pycache__/
+*.pyc
+storage/
+app/frontend/dist/
+app/desktop/dist/
+packages/shared/dist/

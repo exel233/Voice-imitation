@@ -1,0 +1,19 @@
+{
+  "name": "@voice-studio/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "tsc -p tsconfig.json && wait-on tcp:5173 && node scripts/launch.cjs development",
+    "start": "tsc -p tsconfig.json && node scripts/launch.cjs production",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "electron": "^35.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "typescript": "^5.8.3"
+  }
+}

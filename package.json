@@ -1,0 +1,23 @@
+{
+  "name": "voice-imitation-studio",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "app/desktop",
+    "app/frontend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev --workspace packages/shared\" \"npm run dev --workspace app/frontend\" \"npm run dev --workspace app/desktop\"",
+    "dev:all": "concurrently -k \"npm run backend:dev\" \"npm run dev\"",
+    "build": "npm run build --workspace packages/shared && npm run build --workspace app/frontend && npm run build --workspace app/desktop",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "backend:dev": "python -m uvicorn backend.app.main:app --reload --port 8765",
+    "backend:start": "python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8765"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "wait-on": "^8.0.3"
+  }
+}
