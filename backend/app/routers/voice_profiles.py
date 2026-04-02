@@ -1,6 +1,6 @@
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
-from ..models import CreateVoiceProfileRequest
+from ..models import CreateVoiceProfileRequest, UpdateProfileReferenceRequest
 from ..services import VoiceProfileService
 from ..storage import delete_profile, list_profiles
 
@@ -50,3 +50,13 @@ async def create_profile_from_upload(
 def remove_profile(profile_id: str):
     delete_profile(profile_id)
     return {"ok": True}
+
+
+@router.put("/voice-profiles/{profile_id}/reference")
+def update_profile_reference(profile_id: str, request: UpdateProfileReferenceRequest):
+    try:
+        return service.update_reference(profile_id, request)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=f"Profile not found: {profile_id}") from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc

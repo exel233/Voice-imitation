@@ -140,3 +140,40 @@
 [0] npm run backend:dev exited with code 1
 [1] [1] [2m00:24:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
 [1] [2] npm run dev --workspace app/desktop exited with code 0
+[1] [1] [2m00:28:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m00:28:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m00:35:13[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [0] [2J[3J[H00:51:52 - File change detected. Starting incremental compilation...
+[1] [0] 
+[1] [0] 
+[1] [0] 00:51:53 - Found 0 errors. Watching for file changes.
+[1] [0] [2J[3J[H00:51:55 - File change detected. Starting incremental compilation...
+[1] [0] 
+[1] [0] 
+[1] [0] 00:51:56 - Found 0 errors. Watching for file changes.
+[1] [1] [2m00:53:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [0] [2J[3J[H01:18:15 - File change detected. Starting incremental compilation...
+[1] [0] 
+[1] [1] [2m01:18:16[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:18:16[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [0] 
+[1] [0] 01:18:16 - Found 0 errors. Watching for file changes.
+[1] [0] [2J[3J[H01:34:53 - File change detected. Starting incremental compilation...
+[1] [0] 
+[1] [0] 
+[1] [0] 01:34:54 - Found 0 errors. Watching for file changes.
+[1] [1] [2m01:34:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:34:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:50:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:50:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:50:49[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:50:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m01:51:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m02:21:44[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m02:21:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [1] [2m02:22:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [0] [2J[3J[H02:22:30 - File change detected. Starting incremental compilation...
+[1] [0] 
+[1] [1] [2m02:22:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[1] [0] 
+[1] [0] 02:22:33 - Found 0 errors. Watching for file changes.

@@ -62,6 +62,7 @@ def preprocess_sample(profile_id: str, sample_id: str, raw_path: Path, original_
 
     duration_sec = float(len(processed) / TARGET_SAMPLE_RATE)
     warnings = analyze_sample_warnings(processed, TARGET_SAMPLE_RATE)
+    quality_score = score_sample_quality(processed, TARGET_SAMPLE_RATE, warnings)
     return VoiceSampleRecord(
         id=sample_id,
         originalName=original_name,
@@ -72,6 +73,7 @@ def preprocess_sample(profile_id: str, sample_id: str, raw_path: Path, original_
         sampleRate=TARGET_SAMPLE_RATE,
         channels=1,
         warnings=warnings,
+        qualityScore=quality_score,
     )
 
 
@@ -145,6 +147,17 @@ def analyze_sample_warnings(audio: np.ndarray, sample_rate: int) -> list[str]:
     return warnings
 
 
+def score_sample_quality(audio: np.ndarray, sample_rate: int, warnings: list[str]) -> float:
+    duration_sec = len(audio) / sample_rate
+    score = min(1.0, duration_sec / 30.0)
+    silence_ratio = float(np.mean(np.abs(audio) < 0.01))
+    voiced_ratio = max(0.0, 1.0 - silence_ratio)
+    score = min(1.0, score * (0.55 + 0.45 * voiced_ratio))
+    if warnings:
+        score -= min(0.4, 0.08 * len(set(warnings)))
+    return round(max(0.05, min(1.0, score)), 3)
+
+
 def build_profile_artifacts(profile_id: str, samples: list[VoiceSampleRecord]) -> tuple[str, ProfileDiagnostics]:
     spectra: list[np.ndarray] = []
     f0_values: list[float] = []
@@ -207,6 +220,161 @@ def build_profile_artifacts(profile_id: str, samples: list[VoiceSampleRecord]) -
         encoding="utf-8",
     )
     return str(artifact_path.resolve()), diagnostics
+
+
+def build_xtts_reference(
+    profile_id: str,
+    samples: list[VoiceSampleRecord],
+    target_seconds: float = 28.0,
+    preferred_sample_ids: list[str] | None = None,
+    preferred_excerpt_ids: list[str] | None = None,
+) -> str | None:
+    selected_audio: list[np.ndarray] = []
+    excerpt_manifest = build_xtts_reference_excerpts(profile_id, samples, preferred_sample_ids=preferred_sample_ids)
+    preferred_excerpt_set = set(preferred_excerpt_ids or [])
+    ordered_excerpts = sorted(
+        excerpt_manifest,
+        key=lambda excerpt: (
+            excerpt["id"] in preferred_excerpt_set,
+            excerpt["sampleId"] in set(preferred_sample_ids or []),
+            excerpt["score"],
+            excerpt["durationSec"],
+        ),
+        reverse=True,
+    )
+
+    total_selected = 0.0
+    bridge = np.zeros(int(0.12 * TARGET_SAMPLE_RATE), dtype=np.float32)
+    for excerpt in ordered_excerpts:
+        if preferred_excerpt_set and excerpt["id"] not in preferred_excerpt_set:
+            continue
+        audio, _ = librosa.load(excerpt["path"], sr=TARGET_SAMPLE_RATE, mono=True)
+        if audio.size == 0:
+            continue
+        selected_audio.append(audio.astype(np.float32))
+        total_selected += len(audio) / TARGET_SAMPLE_RATE
+        if total_selected >= target_seconds:
+            break
+
+    if not selected_audio:
+        return None
+
+    combined_parts: list[np.ndarray] = []
+    for index, chunk in enumerate(selected_audio):
+        if index > 0:
+            combined_parts.append(bridge)
+        combined_parts.append(chunk)
+
+    combined = normalize_audio(np.concatenate(combined_parts))
+    reference_path = profile_artifacts_dir(profile_id) / "xtts_reference.wav"
+    sf.write(reference_path, combined, TARGET_SAMPLE_RATE)
+    return str(reference_path.resolve())
+
+def build_xtts_reference_excerpts(
+    profile_id: str,
+    samples: list[VoiceSampleRecord],
+    *,
+    preferred_sample_ids: list[str] | None = None,
+) -> list[dict]:
+    excerpt_dir = profile_artifacts_dir(profile_id) / "reference_excerpts"
+    excerpt_dir.mkdir(parents=True, exist_ok=True)
+    for stale in excerpt_dir.glob("*.wav"):
+        stale.unlink(missing_ok=True)
+
+    preferred_set = set(preferred_sample_ids or [])
+    ranked_samples = sorted(
+        samples,
+        key=lambda sample: (sample.id in preferred_set, sample.qualityScore, sample.durationSec),
+        reverse=True,
+    )
+    max_per_sample = min(12.0, max(6.0, 28.0 / max(len(ranked_samples), 1)))
+    excerpt_manifest: list[dict] = []
+
+    for sample in ranked_samples:
+        audio, _ = librosa.load(sample.processedPath, sr=TARGET_SAMPLE_RATE, mono=True)
+        excerpt_specs = extract_reference_excerpts(audio, TARGET_SAMPLE_RATE, max_duration=max_per_sample)
+        for index, excerpt in enumerate(excerpt_specs, start=1):
+            excerpt_id = new_id("excerpt")
+            excerpt_path = excerpt_dir / f"{excerpt_id}.wav"
+            sf.write(excerpt_path, excerpt["audio"], TARGET_SAMPLE_RATE)
+            excerpt_manifest.append(
+                {
+                    "id": excerpt_id,
+                    "sampleId": sample.id,
+                    "originalName": sample.originalName,
+                    "path": str(excerpt_path.resolve()),
+                    "durationSec": round(excerpt["durationSec"], 2),
+                    "score": round(excerpt["score"], 3),
+                    "startSec": round(excerpt["startSec"], 2),
+                    "endSec": round(excerpt["endSec"], 2),
+                    "label": f"{sample.originalName} excerpt {index}",
+                }
+            )
+
+    manifest_path = profile_artifacts_dir(profile_id) / "xtts_reference_excerpts.json"
+    manifest_path.write_text(json.dumps(excerpt_manifest, indent=2), encoding="utf-8")
+    return excerpt_manifest
+
+
+def extract_reference_excerpts(audio: np.ndarray, sample_rate: int, max_duration: float = 12.0) -> list[dict]:
+    intervals = librosa.effects.split(audio, top_db=30, frame_length=2048, hop_length=256)
+    candidates: list[dict] = []
+
+    for start, end in intervals:
+        segment = audio[start:end]
+        duration = len(segment) / sample_rate
+        if duration < 1.0:
+            continue
+        if duration > 8.0:
+            middle = len(segment) // 2
+            half = int(4.0 * sample_rate)
+            clip_start = max(0, middle - half)
+            clip_end = min(len(segment), middle + half)
+            segment = segment[clip_start:clip_end]
+            start = start + clip_start
+            end = start + len(segment)
+            duration = len(segment) / sample_rate
+        rms = float(np.sqrt(np.mean(segment**2))) if segment.size else 0.0
+        silence_ratio = float(np.mean(np.abs(segment) < 0.01))
+        clipping_ratio = float(np.mean(np.abs(segment) > 0.97))
+        score = (duration * 0.4) + (rms * 4.5) + ((1.0 - silence_ratio) * 1.2) - (clipping_ratio * 12.0)
+        candidates.append(
+            {
+                "score": score,
+                "audio": segment.astype(np.float32),
+                "durationSec": duration,
+                "startSec": start / sample_rate,
+                "endSec": end / sample_rate,
+            }
+        )
+
+    candidates.sort(key=lambda item: item["score"], reverse=True)
+
+    chosen: list[dict] = []
+    total = 0.0
+    for candidate in candidates:
+        seg_duration = candidate["durationSec"]
+        if total + seg_duration > max_duration and total >= 6.0:
+            continue
+        chosen.append(candidate)
+        total += seg_duration
+        if total >= max_duration:
+            break
+
+    if not chosen and audio.size:
+        fallback_duration = min(max_duration, len(audio) / sample_rate)
+        fallback = audio[: int(fallback_duration * sample_rate)]
+        if fallback.size:
+            chosen.append(
+                {
+                    "score": max(0.1, fallback_duration * 0.3),
+                    "audio": fallback.astype(np.float32),
+                    "durationSec": fallback_duration,
+                    "startSec": 0.0,
+                    "endSec": fallback_duration,
+                }
+            )
+    return chosen
 
 
 def load_conditioning_artifact(path: str) -> dict:

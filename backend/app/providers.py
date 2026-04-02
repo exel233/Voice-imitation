@@ -7,6 +7,7 @@ import os
 import shutil
 import struct
 import subprocess
+import threading
 import wave
 from pathlib import Path
 
@@ -153,6 +154,8 @@ class XttsTtsProvider(TtsProvider):
     label = "Coqui XTTS-v2"
     cloning_capable = True
     _shared_tts_by_device: dict[str, object] = {}
+    _model_lock = threading.Lock()
+    _synthesis_lock = threading.Lock()
 
     def __init__(self) -> None:
         self._tts = None
@@ -174,50 +177,55 @@ class XttsTtsProvider(TtsProvider):
         if not profile.samples:
             raise RuntimeError("XTTS requires at least one processed speaker sample.")
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        tts = self._get_tts()
-        speaker_wavs = [sample.processedPath for sample in profile.samples]
-        language = infer_language(text)
-        split_sentences = len(text) > 240
-        kwargs = {
-            "text": text,
-            "file_path": str(output_path),
-            "speaker_wav": speaker_wavs,
-            "language": language,
-            "split_sentences": split_sentences,
-        }
-        tts.tts_to_file(**kwargs)
+        with self.__class__._synthesis_lock:
+            tts = self._get_tts()
+            reference_path = str(profile.metadata.get("xttsReferencePath", "")).strip()
+            speaker_wavs = [reference_path] if reference_path else [sample.processedPath for sample in profile.samples]
+            language = infer_language(text)
+            split_sentences = len(text) > 240
+            kwargs = {
+                "text": text,
+                "file_path": str(output_path),
+                "speaker_wav": speaker_wavs,
+                "language": language,
+                "split_sentences": split_sentences,
+            }
+            tts.tts_to_file(**kwargs)
         return output_path
 
     def _get_tts(self):
         if self._tts is not None:
             return self._tts
-        self._patch_torch_load_for_xtts()
-        self._patch_torchaudio_load_for_xtts()
-        from TTS.api import TTS
-
-        requested_device = _preferred_tts_device()
-        candidates = _xtts_device_candidates(requested_device)
-        errors: list[str] = []
-
-        for device in candidates:
-            shared = self.__class__._shared_tts_by_device.get(device)
-            if shared is not None:
-                self._tts = shared
-                self._device = device
+        with self.__class__._model_lock:
+            if self._tts is not None:
                 return self._tts
-            try:
-                instance = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
-                self.__class__._shared_tts_by_device[device] = instance
-                self._tts = instance
-                self._device = device
-                return self._tts
-            except Exception as exc:
-                errors.append(f"{device}: {exc}")
-                if device == "cuda":
-                    continue
-                raise
+            self._patch_torch_load_for_xtts()
+            self._patch_torchaudio_load_for_xtts()
+            from TTS.api import TTS
 
-        raise RuntimeError("XTTS initialization failed. " + " | ".join(errors))
+            requested_device = _preferred_tts_device()
+            candidates = _xtts_device_candidates(requested_device)
+            errors: list[str] = []
+
+            for device in candidates:
+                shared = self.__class__._shared_tts_by_device.get(device)
+                if shared is not None:
+                    self._tts = shared
+                    self._device = device
+                    return self._tts
+                try:
+                    instance = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+                    self.__class__._shared_tts_by_device[device] = instance
+                    self._tts = instance
+                    self._device = device
+                    return self._tts
+                except Exception as exc:
+                    errors.append(f"{device}: {exc}")
+                    if device == "cuda":
+                        continue
+                    raise
+
+            raise RuntimeError("XTTS initialization failed. " + " | ".join(errors))
 
     def _tos_accepted(self) -> bool:
         return os.environ.get("COQUI_TOS_AGREED") == "1"

@@ -26,6 +26,7 @@ class VoiceSampleRecord(BaseModel):
     sampleRate: int
     channels: int
     warnings: list[str] = Field(default_factory=list)
+    qualityScore: float = 0
 
 
 class ProfileDiagnostics(BaseModel):
@@ -110,6 +111,12 @@ class CreateVoiceProfileRequest(BaseModel):
     description: str = ""
     samplePaths: list[str]
     authorizedUseConfirmed: bool = False
+
+
+class UpdateProfileReferenceRequest(BaseModel):
+    sampleIds: list[str] = Field(default_factory=list)
+    excerptIds: list[str] = Field(default_factory=list)
+    regeneratePreview: bool = False
 
 
 class TtsRequest(BaseModel):

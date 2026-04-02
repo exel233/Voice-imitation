@@ -6,6 +6,8 @@ build/
 __pycache__/
 *.pyc
 storage/
+logs/
+*.log
 app/frontend/dist/
 app/desktop/dist/
 packages/shared/dist/

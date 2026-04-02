@@ -41,6 +41,7 @@ export const voiceSampleSchema = z.object({
   sampleRate: z.number(),
   channels: z.number(),
   warnings: z.array(z.string()).default([]),
+  qualityScore: z.number().default(0),
 });
 
 export const profileDiagnosticsSchema = z.object({

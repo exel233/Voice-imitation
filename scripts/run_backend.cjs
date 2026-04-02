@@ -148,7 +148,7 @@ const port = getArgValue(filteredArgs, "--port", "8765");
 freePortIfNeeded(port);
 const child = spawn(
   python,
-  ["-m", "uvicorn", "backend.app.main:app", ...filteredArgs],
+  ["-m", "uvicorn", "backend.app.main:app", "--no-access-log", ...filteredArgs],
   {
     cwd: root,
     stdio: "inherit",

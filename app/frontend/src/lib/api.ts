@@ -135,6 +135,16 @@ export const api = {
   getJob: (id: string) => call<JobRecord>(`/api/jobs/${id}`),
   deleteProfile: (id: string) =>
     call<{ ok: boolean }>(`/api/voice-profiles/${id}`, { method: "DELETE" }),
+  updateProfileReference: (payload: { profileId: string; sampleIds: string[]; excerptIds?: string[]; regeneratePreview?: boolean }) =>
+    call<VoiceProfile>(`/api/voice-profiles/${payload.profileId}/reference`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sampleIds: payload.sampleIds,
+        excerptIds: payload.excerptIds ?? [],
+        regeneratePreview: payload.regeneratePreview ?? false,
+      }),
+    }),
   synthesize: (payload: {
     text: string;
     profileId: string;

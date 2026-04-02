@@ -44,6 +44,31 @@ const nav: { id: AppSection; label: string; icon: typeof House }[] = [
 
 const card = "rounded-[28px] border border-black/5 bg-white/80 p-6 shadow-panel backdrop-blur";
 
+const jobTypeLabels: Record<string, string> = {
+  "voice_profile.build": "Profile Build",
+  "tts.synthesize": "Text to Speech",
+  "audio.replacement": "Audio Replacement",
+  "video.replacement": "Video Replacement",
+};
+
+function formatJobType(type: string) {
+  return jobTypeLabels[type] ?? type.replaceAll(".", " ");
+}
+
+function summarizeJobLogs(logs: string[]) {
+  const cleaned = logs
+    .map((log) => log.trim())
+    .filter(Boolean)
+    .map((log) =>
+      log
+        .replace(/^Requested provider:\s*/i, "Requested: ")
+        .replace(/^Actual provider:\s*/i, "Active: ")
+        .replace(/^Cloning capable:\s*/i, "Cloning: ")
+        .replace(/^Resolution note:\s*/i, "Note: "),
+    );
+  return cleaned.slice(0, 2);
+}
+
 export function App() {
   const [section, setSection] = useState<AppSection>("dashboard");
   const [overview, setOverview] = useState<Overview>({ profiles: [], projects: [], jobs: [], settings: null });
@@ -61,6 +86,13 @@ export function App() {
     authorizedUseConfirmed: true,
   });
   const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const [referenceSelection, setReferenceSelection] = useState<string[]>([]);
+  const [referenceExcerptSelection, setReferenceExcerptSelection] = useState<string[]>([]);
+  const [referenceUpdateState, setReferenceUpdateState] = useState<{
+    saving: boolean;
+    error?: string;
+    message?: string;
+  } | null>(null);
   const [profileBuildState, setProfileBuildState] = useState<{
     jobId: string;
     resultId?: string;
@@ -94,11 +126,50 @@ export function App() {
     () => overview.profiles.find((profile) => profile.id === selectedProfileId) ?? null,
     [overview.profiles, selectedProfileId],
   );
+  const selectedReferenceExcerpts = useMemo(() => {
+    const excerpts = Array.isArray(selectedProfile?.metadata.xttsReferenceExcerpts)
+      ? (selectedProfile?.metadata.xttsReferenceExcerpts as Array<{
+          id: string;
+          sampleId: string;
+          originalName: string;
+          path: string;
+          durationSec: number;
+          score: number;
+          startSec: number;
+          endSec: number;
+          label: string;
+        }>)
+      : [];
+    return excerpts;
+  }, [selectedProfile]);
   const selectedProfileIdRef = useRef(selectedProfileId);
 
   useEffect(() => {
     selectedProfileIdRef.current = selectedProfileId;
   }, [selectedProfileId]);
+
+  useEffect(() => {
+    if (!selectedProfile) {
+      setReferenceSelection([]);
+      setReferenceUpdateState(null);
+      return;
+    }
+    const configured = Array.isArray(selectedProfile.metadata.xttsReferenceSampleIds)
+      ? (selectedProfile.metadata.xttsReferenceSampleIds as string[])
+      : [];
+    const configuredExcerpts = Array.isArray(selectedProfile.metadata.xttsReferenceExcerptIds)
+      ? (selectedProfile.metadata.xttsReferenceExcerptIds as string[])
+      : [];
+    setReferenceSelection(configured.length ? configured : selectedProfile.samples.map((sample) => sample.id));
+    setReferenceExcerptSelection(
+      configuredExcerpts.length
+        ? configuredExcerpts
+        : Array.isArray(selectedProfile.metadata.xttsReferenceExcerpts)
+          ? (selectedProfile.metadata.xttsReferenceExcerpts as Array<{ id: string }>).slice(0, 4).map((excerpt) => excerpt.id)
+          : [],
+    );
+    setReferenceUpdateState(null);
+  }, [selectedProfile]);
 
   useEffect(() => {
     activeWorkRef.current = Boolean(profileBuildState?.active || operationState?.active || inspectState?.active);
@@ -460,6 +531,40 @@ export function App() {
     setStatus(`Updated ${key}`);
   };
 
+  const saveReferenceSelection = async () => {
+    if (!selectedProfile) {
+      return;
+    }
+    setReferenceUpdateState({ saving: true, message: "Updating XTTS reference curation..." });
+    try {
+      const updated = await api.updateProfileReference({
+        profileId: selectedProfile.id,
+        sampleIds: referenceSelection,
+        excerptIds: referenceExcerptSelection,
+      });
+      setOverview((current) => ({
+        ...current,
+        profiles: current.profiles.map((profile) => (profile.id === updated.id ? updated : profile)),
+      }));
+      setReferenceSelection(
+        Array.isArray(updated.metadata.xttsReferenceSampleIds)
+          ? (updated.metadata.xttsReferenceSampleIds as string[])
+          : updated.samples.map((sample) => sample.id),
+      );
+      setReferenceExcerptSelection(
+        Array.isArray(updated.metadata.xttsReferenceExcerptIds)
+          ? (updated.metadata.xttsReferenceExcerptIds as string[])
+          : [],
+      );
+      setReferenceUpdateState({ saving: false, message: "Reference curation saved." });
+      setStatus(`Updated cloning reference for ${updated.name}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Failed to update reference curation";
+      setReferenceUpdateState({ saving: false, error: message, message });
+      setStatus(message);
+    }
+  };
+
   return (
     <div className="min-h-screen text-studio-ink">
       <div className="mx-auto flex min-h-screen max-w-[1600px] gap-6 p-6">
@@ -518,10 +623,15 @@ export function App() {
                   {overview.jobs.slice(0, 6).map((job) => (
                     <div key={job.id} className="rounded-2xl bg-studio-fog/80 p-4">
                       <div className="flex justify-between font-medium">
-                        <span>{job.type}</span>
+                        <span>{formatJobType(job.type)}</span>
                         <span>{Math.round(job.progress * 100)}%</span>
                       </div>
                       <div className="mt-2 text-sm text-studio-ink/65">{job.message || job.step}</div>
+                      {summarizeJobLogs(job.logs).map((log) => (
+                        <div key={log} className="mt-1 text-xs text-studio-ink/50">
+                          {log}
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>
@@ -664,9 +774,32 @@ export function App() {
                       <div className="space-y-3">
                         {selectedProfile.samples.map((sample) => (
                           <div key={sample.id} className="rounded-2xl bg-studio-fog/80 p-4">
-                            <div className="font-medium">{sample.originalName}</div>
-                            <div className="mt-1 text-xs text-studio-ink/55">
-                              {sample.durationSec.toFixed(1)}s, {sample.sampleRate} Hz
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <div className="font-medium">{sample.originalName}</div>
+                                <div className="mt-1 text-xs text-studio-ink/55">
+                                  {sample.durationSec.toFixed(1)}s, {sample.sampleRate} Hz
+                                </div>
+                                <div className="mt-1 text-xs text-studio-ink/55">
+                                  Sample quality {Math.round(sample.qualityScore * 100)}%
+                                </div>
+                              </div>
+                              {selectedProfile.synthesisProvider === "xtts" && (
+                                <label className="flex items-center gap-2 text-xs text-studio-ink/70">
+                                  <input
+                                    type="checkbox"
+                                    checked={referenceSelection.includes(sample.id)}
+                                    onChange={(event) =>
+                                      setReferenceSelection((current) =>
+                                        event.target.checked
+                                          ? Array.from(new Set([...current, sample.id]))
+                                          : current.filter((id) => id !== sample.id),
+                                      )
+                                    }
+                                  />
+                                  Use for XTTS reference
+                                </label>
+                              )}
                             </div>
                             <audio controls className="mt-3 w-full" src={api.mediaUrl(sample.processedPath)} />
                           </div>
@@ -674,10 +807,105 @@ export function App() {
                       </div>
                     </div>
                     <div className="space-y-4">
+                      {selectedProfile.synthesisProvider === "xtts" && (
+                        <div className="rounded-2xl bg-studio-fog/80 p-4">
+                          <div className="mb-2 text-sm font-medium">Reference Curation</div>
+                          <div className="text-sm text-studio-ink/65">
+                            XTTS now conditions on a curated reference track built from the selected samples and their cleanest voiced excerpts.
+                          </div>
+                          <div className="mt-3 text-xs text-studio-ink/60">
+                            Selected: {referenceSelection.length} of {selectedProfile.samples.length} sample{selectedProfile.samples.length === 1 ? "" : "s"}
+                          </div>
+                          <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                            {selectedProfile.samples.map((sample) => (
+                              <Badge key={sample.id}>{referenceSelection.includes(sample.id) ? `ref: ${sample.originalName}` : `skip: ${sample.originalName}`}</Badge>
+                            ))}
+                          </div>
+                          <div className="mt-4 flex flex-wrap gap-3">
+                            <button
+                              onClick={() => void saveReferenceSelection()}
+                              disabled={referenceUpdateState?.saving || referenceSelection.length === 0}
+                              className="rounded-2xl bg-studio-ink px-4 py-2 text-sm text-studio-fog disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                              {referenceUpdateState?.saving ? "Saving..." : "Save Reference Selection"}
+                            </button>
+                            <button
+                              onClick={() => setReferenceSelection(selectedProfile.samples.map((sample) => sample.id))}
+                              className="rounded-2xl bg-white px-4 py-2 text-sm text-studio-ink"
+                            >
+                              Use All Samples
+                            </button>
+                          </div>
+                          {selectedReferenceExcerpts.length > 0 && (
+                            <div className="mt-5">
+                              <div className="mb-2 text-sm font-medium">Excerpt Timeline Picks</div>
+                              <div className="text-sm text-studio-ink/65">
+                                Choose the exact voiced excerpts used to build the XTTS reference track. Cleaner excerpts usually improve similarity more than longer mixed recordings.
+                              </div>
+                              <div className="mt-3 space-y-3">
+                                {selectedReferenceExcerpts.map((excerpt) => (
+                                  <div key={excerpt.id} className="rounded-2xl bg-white/80 p-4">
+                                    <div className="flex items-start justify-between gap-3">
+                                      <div>
+                                        <div className="font-medium">{excerpt.label}</div>
+                                        <div className="mt-1 text-xs text-studio-ink/55">
+                                          {excerpt.originalName} • {excerpt.startSec.toFixed(1)}s - {excerpt.endSec.toFixed(1)}s • {excerpt.durationSec.toFixed(1)}s
+                                        </div>
+                                        <div className="mt-1 text-xs text-studio-ink/55">
+                                          Excerpt score {Math.round(excerpt.score * 100)}%
+                                        </div>
+                                      </div>
+                                      <label className="flex items-center gap-2 text-xs text-studio-ink/70">
+                                        <input
+                                          type="checkbox"
+                                          checked={referenceExcerptSelection.includes(excerpt.id)}
+                                          onChange={(event) =>
+                                            setReferenceExcerptSelection((current) =>
+                                              event.target.checked
+                                                ? Array.from(new Set([...current, excerpt.id]))
+                                                : current.filter((id) => id !== excerpt.id),
+                                            )
+                                          }
+                                        />
+                                        Use excerpt
+                                      </label>
+                                    </div>
+                                    <audio controls className="mt-3 w-full" src={api.mediaUrl(excerpt.path)} />
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="mt-3 flex flex-wrap gap-3">
+                                <button
+                                  onClick={() => setReferenceExcerptSelection(selectedReferenceExcerpts.slice(0, 4).map((excerpt) => excerpt.id))}
+                                  className="rounded-2xl bg-white px-4 py-2 text-sm text-studio-ink"
+                                >
+                                  Use Top Excerpts
+                                </button>
+                                <button
+                                  onClick={() => setReferenceExcerptSelection(selectedReferenceExcerpts.map((excerpt) => excerpt.id))}
+                                  className="rounded-2xl bg-white px-4 py-2 text-sm text-studio-ink"
+                                >
+                                  Use All Excerpts
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                          {referenceUpdateState?.message && (
+                            <div className={`mt-3 text-sm ${referenceUpdateState.error ? "text-amber-800" : "text-emerald-700"}`}>
+                              {referenceUpdateState.message}
+                            </div>
+                          )}
+                        </div>
+                      )}
                       <div>
                         <div className="mb-3 text-sm font-medium">Quick Profile Preview</div>
                         {selectedProfile.quickPreviewAudioPath && (
                           <audio controls className="w-full" src={api.mediaUrl(selectedProfile.quickPreviewAudioPath)} />
+                        )}
+                        {!selectedProfile.quickPreviewAudioPath && (
+                          <div className="rounded-2xl bg-studio-fog/80 p-4 text-sm text-studio-ink/65">
+                            Quick preview is deferred during profile creation to keep builds fast on CPU.
+                          </div>
                         )}
                       </div>
                       <div>
@@ -726,6 +954,14 @@ export function App() {
                     <div className="mt-1 text-studio-ink/65">
                       Requested: {selectedProfile.requestedProvider}. Active: {selectedProfile.synthesisProvider} {selectedProfile.cloningCapable ? "(speaker-conditioned)" : "(generic fallback)"}
                     </div>
+                    {selectedProfile.synthesisProvider === "xtts" && (
+                      <div className="mt-1 text-studio-ink/65">
+                        Curated XTTS reference samples:{" "}
+                        {Array.isArray(selectedProfile.metadata.xttsReferenceSampleIds)
+                          ? (selectedProfile.metadata.xttsReferenceSampleIds as string[]).length
+                          : selectedProfile.samples.length}
+                      </div>
+                    )}
                     {setupStatus?.xtts.available && selectedProfile.synthesisProvider === "xtts" && (
                       <div className="mt-2 text-emerald-700">XTTS neural cloning is active for this profile.</div>
                     )}
@@ -847,11 +1083,19 @@ export function App() {
                   {overview.jobs.map((job) => (
                     <div key={job.id} className="rounded-2xl bg-studio-fog/80 p-4">
                       <div className="flex justify-between">
-                        <div className="font-medium">{job.type}</div>
+                        <div className="font-medium">{formatJobType(job.type)}</div>
                         <div className="text-sm capitalize">{job.status}</div>
                       </div>
                       <div className="mt-1 text-sm text-studio-ink/65">{job.message || job.step}</div>
-                      {job.logs.length > 0 && <div className="mt-2 text-xs text-studio-ink/50">{job.logs[0]}</div>}
+                      {summarizeJobLogs(job.logs).length > 0 && (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {summarizeJobLogs(job.logs).map((log) => (
+                            <span key={log} className="rounded-full bg-white/70 px-3 py-1 text-xs text-studio-ink/65">
+                              {log}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

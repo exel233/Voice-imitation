@@ -7,9 +7,18 @@ import subprocess
 import sys
 from pathlib import Path
 
-from .audio_pipeline import build_profile_artifacts, create_media_preview_excerpt, ingest_sample_from_path, ingest_uploaded_bytes, stage_uploaded_bytes, synthesize_quick_profile_preview
+from .audio_pipeline import (
+    build_profile_artifacts,
+    build_xtts_reference,
+    build_xtts_reference_excerpts,
+    create_media_preview_excerpt,
+    ingest_sample_from_path,
+    ingest_uploaded_bytes,
+    stage_uploaded_bytes,
+    synthesize_quick_profile_preview,
+)
 from .media_tools import resolve_ffmpeg
-from .models import AppSettings, CreateVoiceProfileRequest, JobRecord, ProjectRecord, ReplacementRequest, TtsRequest, VoiceProfile
+from .models import AppSettings, CreateVoiceProfileRequest, JobRecord, ProjectRecord, ReplacementRequest, TtsRequest, UpdateProfileReferenceRequest, VoiceProfile
 from .provider_registry import resolve_asr_provider, resolve_tts_provider
 from .storage import CACHE, OUTPUTS, load_settings, new_id, now_iso, profile_artifacts_dir, read_job, read_profile, save_job, save_profile, save_project
 
@@ -170,6 +179,24 @@ class VoiceProfileService:
                 "profileBuilder": "audio_preprocessing -> speaker_profile_builder -> speaker_profile_store",
             },
         )
+        if self.provider.name == "xtts":
+            excerpt_manifest = build_xtts_reference_excerpts(profile_id, samples)
+            reference_path = build_xtts_reference(profile_id, samples)
+            if reference_path:
+                profile.metadata["xttsReferencePath"] = reference_path
+                profile.metadata["xttsReferenceSampleIds"] = [
+                    sample.id for sample in sorted(samples, key=lambda sample: (sample.qualityScore, sample.durationSec), reverse=True)
+                ]
+                profile.metadata["xttsReferenceExcerpts"] = excerpt_manifest
+                profile.metadata["xttsReferenceExcerptIds"] = [excerpt["id"] for excerpt in excerpt_manifest[: min(len(excerpt_manifest), 4)]]
+                profile.diagnostics = profile.diagnostics.model_copy(
+                    update={
+                        "notes": [
+                            *profile.diagnostics.notes,
+                            "XTTS uses a curated reference track built from the cleanest voiced excerpts instead of the full raw sample set.",
+                        ]
+                    }
+                )
         if generate_quick_preview:
             if job:
                 self.jobs.update(job, progress=0.82, step="Rendering preview", message="Generating quick profile preview")
@@ -184,6 +211,54 @@ class VoiceProfileService:
                 }
             )
         return save_profile(profile)
+
+    def update_reference(self, profile_id: str, request: UpdateProfileReferenceRequest) -> VoiceProfile:
+        profile = read_profile(profile_id)
+        if not profile.samples:
+            raise ValueError("Profile has no processed samples to curate.")
+        if profile.synthesisProvider != "xtts":
+            raise ValueError("Manual reference curation is currently available for XTTS profiles only.")
+
+        selected_ids = request.sampleIds or [sample.id for sample in profile.samples]
+        valid_ids = {sample.id for sample in profile.samples}
+        curated_ids = [sample_id for sample_id in selected_ids if sample_id in valid_ids]
+        if not curated_ids:
+            raise ValueError("Choose at least one valid source sample for the XTTS reference.")
+
+        excerpt_manifest = build_xtts_reference_excerpts(profile.id, profile.samples, preferred_sample_ids=curated_ids)
+        valid_excerpt_ids = {excerpt["id"] for excerpt in excerpt_manifest}
+        curated_excerpt_ids = [excerpt_id for excerpt_id in request.excerptIds if excerpt_id in valid_excerpt_ids]
+        if not curated_excerpt_ids:
+            curated_excerpt_ids = [excerpt["id"] for excerpt in excerpt_manifest[: min(len(excerpt_manifest), 4)]]
+
+        reference_path = build_xtts_reference(
+            profile.id,
+            profile.samples,
+            preferred_sample_ids=curated_ids,
+            preferred_excerpt_ids=curated_excerpt_ids,
+        )
+        if not reference_path:
+            raise ValueError("Could not build a curated XTTS reference from the selected samples.")
+
+        notes = [note for note in profile.diagnostics.notes if "curated reference track" not in note.lower()]
+        notes.append("XTTS uses a curated reference track built from your selected source samples and voiced excerpts.")
+
+        updated = profile.model_copy(
+            update={
+                "updatedAt": now_iso(),
+                "metadata": {
+                    **profile.metadata,
+                    "xttsReferencePath": reference_path,
+                    "xttsReferenceSampleIds": curated_ids,
+                    "xttsReferenceExcerpts": excerpt_manifest,
+                    "xttsReferenceExcerptIds": curated_excerpt_ids,
+                },
+                "diagnostics": profile.diagnostics.model_copy(update={"notes": notes}),
+            }
+        )
+        if request.regeneratePreview:
+            updated.quickPreviewAudioPath = synthesize_quick_profile_preview(profile.id, self.provider, updated, PROFILE_PREVIEW_TEXT)
+        return save_profile(updated)
 
 
 class ProjectService:

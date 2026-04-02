@@ -17,7 +17,9 @@
     "backend:dev": "node scripts/run_backend.cjs --port 8765",
     "backend:start": "node scripts/run_backend.cjs --host 127.0.0.1 --port 8765",
     "cleanup:profile-data:check": "python scripts/cleanup_orphaned_profile_data.py",
-    "cleanup:profile-data": "python scripts/cleanup_orphaned_profile_data.py --apply"
+    "cleanup:profile-data": "python scripts/cleanup_orphaned_profile_data.py --apply",
+    "cleanup:logs": "python scripts/cleanup_logs.py",
+    "profiles:rebuild-xtts": "python scripts/rebuild_xtts_references.py"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

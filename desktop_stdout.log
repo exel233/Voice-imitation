@@ -1,5 +1,0 @@
-
-> @voice-studio/desktop@0.1.0 dev
-> tsc -p tsconfig.json && wait-on tcp:5173 && node scripts/launch.cjs development
-
-
